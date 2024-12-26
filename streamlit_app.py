@@ -158,10 +158,9 @@ with st.sidebar:
                garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
                st.write("Size of garage in car capacity is : ", garageCars)
 
-    # with st.expander('Monthly Rate'):
-    #            msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
-    #            msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
-    #            st.write("Zoning code selected is: ", msZoning_code)
+    with st.expander('Monthly Rate'):
+               monthlyRate = st.number_input("Monthly Rate", value=None, placeholder="Enter the monthly rate")
+               st.write("Monthly rate is : $", totalBasmtSF)
 
     # with st.expander('Number Companies Worked'):
     # # Utility input with mapping
