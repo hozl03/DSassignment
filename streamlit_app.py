@@ -141,8 +141,8 @@ with st.sidebar:
                st.write("Distance from home is : ", distance ,"KM")
 
     with st.expander('Education Field'):
-               educationField = st.selectbox('educationField', list(educationField_mapping.keys()))
-               educationField_code = educationField_mapping[educationField]
+               educationField = st.selectbox('educationField', list(educationalField_mapping.keys()))
+               educationField_code = educationalField_mapping[educationField]
                st.write("Education Field is: ", educationField_code)
 
     with st.expander('Gender'):
