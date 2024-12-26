@@ -396,4 +396,4 @@ if st.button('Predict'):
 
         # elif model_choice == 'Random Forest':
     random_forest_pred = loaded_random_forest.predict(X)
-    st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
+    st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
