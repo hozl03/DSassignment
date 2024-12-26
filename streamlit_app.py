@@ -184,40 +184,24 @@ with st.sidebar:
 
            
     # Corrected data dictionary with valid variable names
-    data = {
-           'OverallQual': overallQuality,  # Use overallQuality from slider
-           'YearBuilt': yearBuilt,  # Extract the year from date input
-           'YearRemodAdd': yearRemodAdd,  # Extract the year from date input
-           'TotalBsmtSF': totalBasmtSF,  # Use totalBasmtSF from slider
-           'TotRmsAbvGrd': totalRmsAbvGrd,  # Use totalRmsAbvGrd from slider
-           '1stFlrSF': floorSF,  # Use floorSF from slider
-           'GrLivArea': grLiveArea,  # Use grLiveArea from slider
-           'FullBath': fullBath,  # Use fullBath from slider
-           'GarageCars': garageCars,  # Use garageCars from slider
-           'MSZoning': msZoning_code,  # Use msZoning_code
-           'Utilities': utility_code,  # Use utility_code
-           'BldgType': buildingType_code,  # Use buildingType_code
-           'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
-           'SaleCondition': saleCondition_code,  # Use saleCondition_code from selectbox
-           'LandSlope': landSlope_code,  # Use landSlope_code
+    # data = {
+    #        'OverallQual': overallQuality,  # Use overallQuality from slider
+    #        'YearBuilt': yearBuilt,  # Extract the year from date input
+    #        'YearRemodAdd': yearRemodAdd,  # Extract the year from date input
+    #        'TotalBsmtSF': totalBasmtSF,  # Use totalBasmtSF from slider
+    #        'TotRmsAbvGrd': totalRmsAbvGrd,  # Use totalRmsAbvGrd from slider
+    #        '1stFlrSF': floorSF,  # Use floorSF from slider
+    #        'GrLivArea': grLiveArea,  # Use grLiveArea from slider
+    #        'FullBath': fullBath,  # Use fullBath from slider
+    #        'GarageCars': garageCars,  # Use garageCars from slider
+    #        'MSZoning': msZoning_code,  # Use msZoning_code
+    #        'Utilities': utility_code,  # Use utility_code
+    #        'BldgType': buildingType_code,  # Use buildingType_code
+    #        'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
+    #        'SaleCondition': saleCondition_code,  # Use saleCondition_code from selectbox
+    #        'LandSlope': landSlope_code,  # Use landSlope_code
 
-           # 'OverallQual': 5,  # Use overallQuality from slider
-           # 'YearBuilt': 1958,  # Extract the year from date input
-           # 'YearRemodAdd': 1985,  # Extract the year from date input
-           # 'TotalBsmtSF': 912,  # Use totalBasmtSF from slider
-           # 'TotRmsAbvGrd': 5,  # Use totalRmsAbvGrd from slider
-           # '1stFlrSF': 912,  # Use floorSF from slider
-           # 'GrLivArea': 912,  # Use grLiveArea from slider
-           # 'FullBath': 1,  # Use fullBath from slider
-           # 'GarageCars': 1,  # Use garageCars from slider
-           # 'MSZoning': "RL",  # Use msZoning_code
-           # 'Utilities': "AllPub",  # Use utility_code
-           # 'BldgType': "1Fam",  # Use buildingType_code
-           # 'KitchenQual': "TA",  # Use kitchenQual_code from selectbox
-           # 'SaleCondition': "Normal",  # Use saleCondition_code from selectbox
-           # 'LandSlope': "Gtl",  # Use landSlope_code
-
-    }
+    # }
 
 
 # with st.expander('Input Data'):
@@ -273,14 +257,14 @@ if st.button('Predict'):
     if missing_values.any():
         st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
     else:
-        # Proceed with prediction only if no values are missing
-        if model_choice == 'Linear Regression':
-            lin_reg_pred = loaded_lin_reg.predict(X)
-            st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+        # # Proceed with prediction only if no values are missing
+        # if model_choice == 'Linear Regression':
+        #     lin_reg_pred = loaded_lin_reg.predict(X)
+        #     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
-        elif model_choice == 'Support Vector Regression':
-            svr_pred = loaded_svr.predict(X)
-            st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+        # elif model_choice == 'Support Vector Regression':
+        #     svr_pred = loaded_svr.predict(X)
+        #     st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
         elif model_choice == 'Random Forest':
             random_forest_pred = loaded_random_forest.predict(X)
