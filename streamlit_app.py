@@ -127,7 +127,7 @@ with st.sidebar:
 
     st.header('Input features')
     with st.expander('Business Travel'):
-               businessTravel = st.selectbox('Business Travel', list(buildingType_mapping.keys()))
+               businessTravel = st.selectbox('Business Travel', list(businessTravel_mapping.keys()))
                businessTravel_code = businessTravel_mapping[businessTravel]
                st.write("Business Travel is: ", businessTravel_code)
 
