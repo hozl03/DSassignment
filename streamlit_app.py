@@ -180,6 +180,23 @@ with st.sidebar:
     with st.expander('Training Times Last Year'): 
                trainingTimesLastYear = st.slider("Training Times Last Year", 0, 5, 3)
                st.write("Training times last year is : ", trainingTimesLastYear)
+   
+           
+    # Corrected data dictionary with valid variable names
+    data = {
+           'BusinessTravel': businessTravel,  
+           'Department': department,  
+           'DistanceFromHome': distance,  
+           'EducationField': educationField,  
+           'Gender': gender,  
+           'HourlyRate': hourlyRate,  
+           'JobRole': jobRole,  
+           'MaritalStatus': maritalStatus,  
+           'MonthlyRate': monthlyRate,  
+           'NumCompaniesWorked': numberCompaniesWorked,  
+           'OverTime': overTime,  
+           'TrainingTimesLastYear': trainingTimesLastYear
+    }
 
 
            
