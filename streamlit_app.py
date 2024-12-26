@@ -85,7 +85,7 @@ st.write("Develop by: Tay Keng Aik,  Cheong Wai Kian, Ho Zhi Lin")
 # Load the data
 with st.expander('Data Set'):
     st.write('**Raw data**')
-    df = pd.read_csv('train.csv')
+    df = pd.read_csv('HR-Employee.csv')
     st.write(df)
            
     st.write('**Statistical Summary of Dataset**')
