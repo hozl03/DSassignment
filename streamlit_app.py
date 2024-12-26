@@ -28,8 +28,6 @@ import joblib
 
 loaded_random_forest = joblib.load('random_forest_model.joblib')
 
-column_names = joblib.load('saved_feature_names.pkl')
-scaler = joblib.load('scaler.pkl')
 
 
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
