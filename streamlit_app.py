@@ -251,7 +251,7 @@ model_choice = st.selectbox('Select Model', ['Random Forest', 'Support Vector Re
 
 if st.button('Predict'):
     # Check for missing inputs (NaN or None values)
-    missing_values = input_df.isnull().sum()
+    # missing_values = .isnull().sum()
 
     # Check if there are any missing values in the user's input
     # if missing_values.any():
