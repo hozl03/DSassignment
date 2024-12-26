@@ -27,8 +27,6 @@ st.title('FutureStaff: Employee Attrition Insights')
 import joblib
 
 loaded_random_forest = joblib.load('random_forest_model.joblib')
-loaded_svr = joblib.load('svr_model.joblib')
-loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
 column_names = joblib.load('saved_feature_names.pkl')
 scaler = joblib.load('scaler.pkl')
