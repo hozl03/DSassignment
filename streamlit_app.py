@@ -316,10 +316,10 @@ with st.expander('Input Data'):
 
     for column in df_clean.columns:
 # Check if the column is of object type or category type and has limited unique values
-    if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
-        categorical_col.append(column)
+        if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
+            categorical_col.append(column)
 
-        df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
+    df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
 
 # Check if 'Attrition' is in the list before removing
     if "Attrition" in categorical_col:
