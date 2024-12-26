@@ -99,12 +99,12 @@ with st.expander('Data Set'):
     st.write(summary)
 
            # Identify columns with correlation <= 0 with 'Attrition'
-           columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
+    columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
            
            # Drop these columns from the DataFrame
-           df_after_dropping = encoded_df.drop(columns=columns_to_drop)
-           df_after_dropping = df_after_dropping.drop(['Over18', 'EmployeeCount', 'StandardHours'], axis=1)
-           df_clean = df_after_dropping
+    df_after_dropping = encoded_df.drop(columns=columns_to_drop)
+    df_after_dropping = df_after_dropping.drop(['Over18', 'EmployeeCount', 'StandardHours'], axis=1)
+    df_clean = df_after_dropping
 
            
 
@@ -217,15 +217,14 @@ with st.expander('Input Data'):
            input_df = pd.DataFrame(data, index=[0])
            st.write('User Input Data')
            st.write(input_df)
-           input_data = pd.concat([input_df, df_filtered], axis=0)
+           input_data = pd.concat([input_df, df_clean], axis=0)
            
-           important_num_cols.remove("GarageArea")
            # Handle categorical variables before numeric scaling
            X = pd.get_dummies(input_data, columns=cat_cols)
            
            
            
-           important_num_cols.remove("SalePrice")
+           df_clean.remove("Attrition")
            
            # Handle the case where the important numeric columns are scaled after dummy encoding
            # Check if important_num_cols exist in X
@@ -237,8 +236,8 @@ with st.expander('Input Data'):
            # Standardization of data
            scaler = StandardScaler()
            # Apply scaler only on numeric columns
-           X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
-           X = X.drop('SalePrice', axis=1)
+           X[df_clean] = scaler.fit_transform(X[df_clean])
+           X = X.drop('Attrition', axis=1)
            
            # Convert binary columns from 1/0 to True/False
            for column in X.columns:
