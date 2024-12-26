@@ -28,6 +28,8 @@ from sklearn.preprocessing import PolynomialFeatures
 import joblib
 
 loaded_random_forest = joblib.load('random_forest_model.joblib')
+loaded_catboost = joblib.load('catboost_model.joblib')
+loaded_nn = joblib.load('neural_network_model.joblib')
 
 
 
@@ -379,21 +381,21 @@ model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Suppor
 
 if st.button('Predict'):
     # Check for missing inputs (NaN or None values)
-    # missing_values = .isnull().sum()
+    missing_values = .isnull().sum()
 
-    # Check if there are any missing values in the user's input
-    # if missing_values.any():
-    #     st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
-    # else:
-        # # Proceed with prediction only if no values are missing
-        # if model_choice == 'Linear Regression':
-        #     lin_reg_pred = loaded_lin_reg.predict(X)
-        #     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+    Check if there are any missing values in the user's input
+    if missing_values.any():
+        st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
+    else:
+        # Proceed with prediction only if no values are missing
+        if model_choice == 'Neural Network':
+            nn_pred = loaded_nn.predict(X)
+            st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
 
-        # elif model_choice == 'Support Vector Regression':
-        #     svr_pred = loaded_svr.predict(X)
-        #     st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+        elif model_choice == 'Category Boost':
+            catboost_pred = loaded_catboost.predict(X)
+            st.write(f"**Category Boost Prediction: {catboost_pred[0]:,.2f}**")
 
-        # elif model_choice == 'Random Forest':
-    random_forest_pred = loaded_random_forest.predict(X)
-    st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
+        elif model_choice == 'Random Forest':
+            random_forest_pred = loaded_random_forest.predict(X)
+            st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
