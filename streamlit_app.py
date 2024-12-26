@@ -4,7 +4,7 @@ st.title('FutureStaff: Employee Attrition Insights')
 
 import streamlit as st
 import pandas as pd
-# import seaborn as sns
+import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime
