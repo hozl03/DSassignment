@@ -332,7 +332,7 @@ with st.expander('Input Data'):
 
 
 
-    df_clean.remove("Attrition")
+    df_clean.drop("Attrition")
 
 # Handle the case where the important numeric columns are scaled after dummy encoding
 # Check if important_num_cols exist in X
