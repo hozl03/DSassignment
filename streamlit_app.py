@@ -312,7 +312,22 @@ with st.expander('Input Data'):
            input_data = pd.concat([input_df, df_clean], axis=0)
            
            # Handle categorical variables before numeric scaling
-           X = pd.get_dummies(input_data, columns=categorical_col)
+    categorical_col = []
+    for column in df_clean.columns:
+    # Check if the column is of object type or category type and has limited unique values
+        if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
+            categorical_col.append(column)
+
+    df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
+
+# Check if 'Attrition' is in the list before removing
+    if "Attrition" in categorical_col:
+    # Transform categorical data into dummies
+        categorical_col.remove("Attrition")
+        data = pd.get_dummies(df, columns=categorical_col)
+    else:
+        # Handle the case where 'Attrition' is not in the list, e.g., use original data
+        data = df.copy()
            
            
            
