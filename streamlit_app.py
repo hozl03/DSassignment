@@ -137,47 +137,47 @@ with st.sidebar:
                st.write("Department is: ", department_code)
 
     with st.expander('Distance From Home'):
-               distance = st.number_input("Dzistance", value=None, placeholder="Enter the distance from home")
+               distance = st.number_input("Distance", value=None, placeholder="Enter the distance from home")
                st.write("Distance from home is : ", distance ,"KM")
 
     with st.expander('Education Field'):
-               totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
-               st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
+               educationField = st.selectbox('educationField', list(educationField_mapping.keys()))
+               educationField_code = educationField_mapping[educationField]
+               st.write("Education Field is: ", educationField_code)
 
     with st.expander('Gender'):
-               grLiveArea = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
-               st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
+               gender = st.selectbox('Gender', list(gender_mapping.keys()))
+               gender_code = gender_mapping[gender]
+               st.write("Gender is: ", gender_code)
 
     with st.expander('Hourly Rate'):
-               fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
-               st.write("Full bathrooms above grade is : ", fullBath)
+               hourlyRate = st.number_input("Hourly Rate", value=None, placeholder="Enter the hourly rate")
+               st.write("Hourly rate is : ", hourlyRate ,"Hours")
 
     with st.expander('Job Role'):
-               totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
-               st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
+               jobRole = st.selectbox('Job Role', list(jobRole_mapping.keys()))
+               jobRole_code = jobRole_mapping[jobRole]
+               st.write("Job role is: ", jobRole_code)
 
     with st.expander('Marital Status'):
-               garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
-               st.write("Size of garage in car capacity is : ", garageCars)
+               maritalStatus = st.selectbox('Marital Status', list(maritalStatus_mapping.keys()))
+               maritalStatus_code = maritalStatus_mapping[maritalStatus]
+               st.write("Marital status is: ", maritalStatus_code)
 
     with st.expander('Monthly Rate'):
                monthlyRate = st.number_input("Monthly Rate", value=None, placeholder="Enter the monthly rate")
                st.write("Monthly rate is : $", monthlyRate)
 
-    # with st.expander('Number Companies Worked'):
-    # # Utility input with mapping
-    #            utility = st.selectbox('Utility', list(utility_mapping.keys()))
-    #            utility_code = utility_mapping[utility]
-    #            st.write("Utility code selected is: ", utility_code)
+    with st.expander('Number Companies Worked'):
+               numberCompaniesWorked = st.slider("Number Companies Worked", 0, 10, 5)
+               st.write("Number companies worked is : ", numberCompaniesWorked)
 
-    # with st.expander('Over Time'):
-    # # Building Type input with mapping
-    #            buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
-    #            buildingType_code = buildingType_mapping[buildingType]
-    #            st.write("Building Type code selected is: ", buildingType_code)
+    with st.expander('Over Time'):
+               overTime = st.selectbox('Over Time', list(overTime_mapping.keys()))
+               overTime_code = overTime_mapping[overTime]
+               st.write("Over Time is: ", overTime_code)
 
     with st.expander('Training Times Last Year'): 
-    # Map kitchen quality input to corresponding code
                trainingTimesLastYear = st.slider("Training Times Last Year", 0, 5, 3)
                st.write("Training times last year is : ", trainingTimesLastYear)
 
