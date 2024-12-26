@@ -8,7 +8,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime
-
+import catboost
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
