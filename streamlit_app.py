@@ -129,15 +129,16 @@ with st.sidebar:
     with st.expander('Business Travel'):
                businessTravel = st.selectbox('Business Travel', list(businessTravel_mapping.keys()))
                businessTravel_code = businessTravel_mapping[businessTravel]
-               st.write("Business Travel is: ", businessTravel_code)
+               st.write("Business travel is: ", businessTravel_code)
 
     with st.expander('Department'):
-               yearBuilt = st.number_input("Original construction year", value=None, placeholder="Enter a year")
-               st.write("The original construction year is: ", yearBuilt)
+               department = st.selectbox('Department', list(department_mapping.keys()))
+               department_code = department_mapping[department]
+               st.write("Department is: ", department_code)
 
     with st.expander('Distance From Home'):
-               yearRemodAdd = st.number_input("Remodel year", value=None, placeholder="Enter a year")
-               st.write("The remodel year is: ", yearBuilt)
+               distance = st.number_input("Dzistance", value=None, placeholder="Enter the distance from home")
+               st.write("Distance from home is : ", distance ,"KM")
 
     with st.expander('Education Field'):
                totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
