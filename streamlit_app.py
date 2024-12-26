@@ -99,78 +99,77 @@ with st.expander('Data Set'):
     st.write(summary)
 
 
-# Detecting outliers using IQR (Interquartile Range)
-def detect_outliers(df, column):
-  Q1 = df[column].quantile(0.25)
-  Q3 = df[column].quantile(0.75)
-  IQR = Q3 - Q1
-  lower_bound = Q1 - 1.5 * IQR
-  upper_bound = Q3 + 1.5 * IQR
-  outliers = df[(df[column] < lower_bound) | (df[column] > upper_bound)]
-  return outliers, lower_bound, upper_bound
+    # Detecting outliers using IQR (Interquartile Range)
+    def detect_outliers(df, column):
+      Q1 = df[column].quantile(0.25)
+      Q3 = df[column].quantile(0.75)
+      IQR = Q3 - Q1
+      lower_bound = Q1 - 1.5 * IQR
+      upper_bound = Q3 + 1.5 * IQR
+      outliers = df[(df[column] < lower_bound) | (df[column] > upper_bound)]
+      return outliers, lower_bound, upper_bound
 
 #To detect outliers using IQR, we can only use numerical field for detection.
 #We have come up with a set of columns to detect outliers as shown in below
 #Detect outliers for selected columns in the dataset
-columns_to_check = ['Age', 'DailyRate', 'DistanceFromHome', 'MonthlyIncome',
+    columns_to_check = ['Age', 'DailyRate', 'DistanceFromHome', 'MonthlyIncome',
                     'MonthlyRate', 'NumCompaniesWorked', 'PercentSalaryHike',
                     'TotalWorkingYears', 'TrainingTimesLastYear',
                     'YearsAtCompany', 'YearsInCurrentRole',
                     'YearsSinceLastPromotion', 'YearsWithCurrManager']
 
-outliers_summary = {}
+    outliers_summary = {}
 
-for column in columns_to_check:
-  outliers, lower_bound, upper_bound = detect_outliers(df, column)
-  outliers_summary[column] = [outliers.shape[0], lower_bound, upper_bound]
+    for column in columns_to_check:
+      outliers, lower_bound, upper_bound = detect_outliers(df, column)
+      outliers_summary[column] = [outliers.shape[0], lower_bound, upper_bound]
 
 # Convert the summary into a DataFrame for better readability
-outliers_summary_df = pd.DataFrame(outliers_summary,
+    outliers_summary_df = pd.DataFrame(outliers_summary,
                                   index=['Number of Outliers', 'Lower Bound', 'Upper Bound'])
 
-outliers_summary_df
+    outliers_summary_df
 
 
 # Filter columns with outliers
-columns_with_outliers = [column for column, values in outliers_summary.items() if values[0] > 0]
+    columns_with_outliers = [column for column, values in outliers_summary.items() if values[0] > 0]
 
 # Drop columns without outliers from the original dataset
-df_filtered = df[columns_with_outliers]
-print("Columns retained for outlier analysis:", columns_with_outliers)
+    df_filtered = df[columns_with_outliers]
 
 # Remove outliers for the retained columns
-df_clean = df.copy()  # Start with a copy of the original dataset
-for column in columns_with_outliers:
-    lb = outliers_summary[column][1]  # Lower Bound
-    ub = outliers_summary[column][2]  # Upper Bound
-    df_clean = df_clean[(df_clean[column] >= lb) & (df_clean[column] <= ub)]
+    df_clean = df.copy()  # Start with a copy of the original dataset
+    for column in columns_with_outliers:
+        lb = outliers_summary[column][1]  # Lower Bound
+        ub = outliers_summary[column][2]  # Upper Bound
+        df_clean = df_clean[(df_clean[column] >= lb) & (df_clean[column] <= ub)]
 
 # Number of rows before and after outlier removal
-rows_before = df.shape[0]
-rows_after = df_clean.shape[0]
-rows_removed = rows_before - rows_after
+    rows_before = df.shape[0]
+    rows_after = df_clean.shape[0]
+    rows_removed = rows_before - rows_after
 
 
 # Check for unrealistic or negative values
-def detect_negative_values(df, columns_to_check):
-    negative_values_summary = {}
-    for column in columns_to_check:
-        negative_count = df[df[column] < 0].shape[0]
-        negative_values_summary[column] = negative_count
-    return negative_values_summary
+    def detect_negative_values(df, columns_to_check):
+        negative_values_summary = {}
+        for column in columns_to_check:
+            negative_count = df[df[column] < 0].shape[0]
+            negative_values_summary[column] = negative_count
+        return negative_values_summary
 
 # Specify columns to check for negative or unrealistic values
-columns_to_check = ['Age', 'DailyRate', 'MonthlyIncome', 'DistanceFromHome',
+    columns_to_check = ['Age', 'DailyRate', 'MonthlyIncome', 'DistanceFromHome',
                     'TotalWorkingYears', 'YearsAtCompany', 'YearsInCurrentRole',
                     'YearsSinceLastPromotion', 'YearsWithCurrManager']
 
 # Detect negative values
-negative_values_summary = detect_negative_values(df_clean, columns_to_check)
+    negative_values_summary = detect_negative_values(df_clean, columns_to_check)
 
 # Convert the summary to a DataFrame for better readability
-negative_values_df = pd.DataFrame.from_dict(
-    negative_values_summary, orient='index', columns=['Negative Value Count']
-)
+    negative_values_df = pd.DataFrame.from_dict(
+        negative_values_summary, orient='index', columns=['Negative Value Count']
+    )
 
 
 
