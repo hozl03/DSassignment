@@ -230,7 +230,7 @@ with st.sidebar:
     }
 
 
-with st.expander('Input Data'):
+# with st.expander('Input Data'):
 
            # # Ensure input_df has the same structure as df_filtered (used in training)
            # input_df = pd.DataFrame(data, index=[0])
