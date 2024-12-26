@@ -158,22 +158,22 @@ with st.sidebar:
                garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
                st.write("Size of garage in car capacity is : ", garageCars)
 
-    with st.expander('Monthly Rate'):
-               msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
-               msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
-               st.write("Zoning code selected is: ", msZoning_code)
+    # with st.expander('Monthly Rate'):
+    #            msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
+    #            msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
+    #            st.write("Zoning code selected is: ", msZoning_code)
 
-    with st.expander('Number Companies Worked'):
-    # Utility input with mapping
-               utility = st.selectbox('Utility', list(utility_mapping.keys()))
-               utility_code = utility_mapping[utility]
-               st.write("Utility code selected is: ", utility_code)
+    # with st.expander('Number Companies Worked'):
+    # # Utility input with mapping
+    #            utility = st.selectbox('Utility', list(utility_mapping.keys()))
+    #            utility_code = utility_mapping[utility]
+    #            st.write("Utility code selected is: ", utility_code)
 
-    with st.expander('Over Time'):
-    # Building Type input with mapping
-               buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
-               buildingType_code = buildingType_mapping[buildingType]
-               st.write("Building Type code selected is: ", buildingType_code)
+    # with st.expander('Over Time'):
+    # # Building Type input with mapping
+    #            buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
+    #            buildingType_code = buildingType_mapping[buildingType]
+    #            st.write("Building Type code selected is: ", buildingType_code)
 
     with st.expander('Training Times Last Year'): 
     # Map kitchen quality input to corresponding code
