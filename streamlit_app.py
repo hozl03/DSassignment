@@ -254,9 +254,9 @@ if st.button('Predict'):
     missing_values = input_df.isnull().sum()
 
     # Check if there are any missing values in the user's input
-    if missing_values.any():
-        st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
-    else:
+    # if missing_values.any():
+    #     st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
+    # else:
         # # Proceed with prediction only if no values are missing
         # if model_choice == 'Linear Regression':
         #     lin_reg_pred = loaded_lin_reg.predict(X)
@@ -266,6 +266,6 @@ if st.button('Predict'):
         #     svr_pred = loaded_svr.predict(X)
         #     st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
-        elif model_choice == 'Random Forest':
+        # elif model_choice == 'Random Forest':
             random_forest_pred = loaded_random_forest.predict(X)
             st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
