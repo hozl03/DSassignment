@@ -177,9 +177,8 @@ with st.sidebar:
 
     with st.expander('Training Times Last Year'): 
     # Map kitchen quality input to corresponding code
-               kitchenQual = st.selectbox('Kitchen Quality', list(kitchenQual_mapping.keys()))
-               kitchenQual_code = kitchenQual_mapping[kitchenQual]  # Map to the corresponding code (e.g., "Ex", "Gd")
-               st.write("Kitchen Quality code selected is: ", kitchenQual_code)
+               trainingTimesLastYear = st.slider("Training Times Last Year", 0, 5, 3)
+               st.write("Training times last year is : ", trainingTimesLastYear)
 
 
            
