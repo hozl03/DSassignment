@@ -120,60 +120,60 @@ with st.expander('Data Visualization'):
 with st.sidebar:
 
     st.header('Input features')
-    with st.expander('Overall Quality'):
+    with st.expander('Business Travel'):
                overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 7)
                st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
-    with st.expander('Year Built'):
+    with st.expander('Department'):
                yearBuilt = st.number_input("Original construction year", value=None, placeholder="Enter a year")
                st.write("The original construction year is: ", yearBuilt)
 
-    with st.expander('Remodel Date'):
+    with st.expander('Distance From Home'):
                yearRemodAdd = st.number_input("Remodel year", value=None, placeholder="Enter a year")
                st.write("The remodel year is: ", yearBuilt)
 
-    with st.expander('Total Basement Area'):
+    with st.expander('Education Field'):
                totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
                st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
 
-    with st.expander('First Floor Square Feet'):
+    with st.expander('Employee Number'):
                floorSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
                st.write("First Floor square feet is : ", floorSF, "sqft")
 
-    with st.expander('Above Grade Living Area'):
+    with st.expander('Gender'):
                grLiveArea = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
                st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
 
-    with st.expander('Full Bathrooms Above Grade'):
+    with st.expander('Hourly Rate'):
                fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
                st.write("Full bathrooms above grade is : ", fullBath)
 
-    with st.expander('Total Rooms Above Grade'):
+    with st.expander('Job Role'):
                totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
                st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
-    with st.expander('Size of Garage'):
+    with st.expander('Marital Status'):
                garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
                st.write("Size of garage in car capacity is : ", garageCars)
 
-    with st.expander('Zoning'):
+    with st.expander('Monthly Rate'):
                msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
                msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
                st.write("Zoning code selected is: ", msZoning_code)
 
-    with st.expander('Utility'):
+    with st.expander('Number Companies Worked'):
     # Utility input with mapping
                utility = st.selectbox('Utility', list(utility_mapping.keys()))
                utility_code = utility_mapping[utility]
                st.write("Utility code selected is: ", utility_code)
 
-    with st.expander('Building Type'):
+    with st.expander('Over Time'):
     # Building Type input with mapping
                buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
                buildingType_code = buildingType_mapping[buildingType]
                st.write("Building Type code selected is: ", buildingType_code)
 
-    with st.expander('Kitchen Quality'): 
+    with st.expander('Training Times Last Year'): 
     # Map kitchen quality input to corresponding code
                kitchenQual = st.selectbox('Kitchen Quality', list(kitchenQual_mapping.keys()))
                kitchenQual_code = kitchenQual_mapping[kitchenQual]  # Map to the corresponding code (e.g., "Ex", "Gd")
