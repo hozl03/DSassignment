@@ -160,7 +160,7 @@ with st.sidebar:
 
     with st.expander('Monthly Rate'):
                monthlyRate = st.number_input("Monthly Rate", value=None, placeholder="Enter the monthly rate")
-               st.write("Monthly rate is : $", totalBasmtSF)
+               st.write("Monthly rate is : $", monthlyRate)
 
     # with st.expander('Number Companies Worked'):
     # # Utility input with mapping
