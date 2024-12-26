@@ -334,11 +334,11 @@ with st.expander('Input Data'):
 
 
 # Handle the case where the important numeric columns are scaled after dummy encoding
-# Check if important_num_cols exist in X
-    missing_cols = [col for col in important_num_cols if col not in X.columns]
+# # Check if important_num_cols exist in X
+#     missing_cols = [col for col in important_num_cols if col not in X.columns]
 
-    if missing_cols:
-        st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+#     if missing_cols:
+#         st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
 
 # Standardization of data
     scaler = StandardScaler()
