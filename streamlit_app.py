@@ -93,29 +93,10 @@ with st.expander('Data Set'):
     st.write(summary)
            
 
-    # Select more important columns
-    numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Numeric columns only
-    if 'SalePrice' in numeric_df.columns:
-        important_num_cols = list(numeric_df.corr()["SalePrice"][
-            (numeric_df.corr()["SalePrice"] > 0.50) | (numeric_df.corr()["SalePrice"] < -0.50)
-        ].index)
-    else:
-        important_num_cols = []
-
-    # Categorical columns
-    cat_cols = ["MSZoning", "Utilities", "BldgType", "KitchenQual", "SaleCondition", "LandSlope"]
-    important_cols = important_num_cols + cat_cols
-
-    df_filtered = df[important_cols]
-    st.write("**Filtered Data with Important Columns**")
-
-    df_filtered = df_filtered.drop('GarageArea', axis=1)
-    st.write(df_filtered)
-
 
 with st.expander('Data Visualization'):
     st.write('**Scatter Plot**')
-    st.scatter_chart(data=df, x='OverallQual', y='SalePrice')  # Modify as needed
+    # st.scatter_chart(data=df, x='OverallQual', y='Attrition')  # Modify as needed
 
     st.write('**Correlation Heatmap**')
     
