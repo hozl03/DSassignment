@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('HEHEHE')
+st.title('FutureStaff: Employee Attrition Insights')
 
 import streamlit as st
 import pandas as pd
