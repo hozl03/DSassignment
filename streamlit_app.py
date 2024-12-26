@@ -97,6 +97,22 @@ with st.expander('Data Set'):
     st.write('**Statistical Summary of Dataset**')
     summary = df.describe().T
     st.write(summary)
+           
+    # Encode categorical columns
+    categorical_cols = df_clean.select_dtypes(include=['object']).columns
+    encoded_df = df_clean.copy()
+    label_encoder = LabelEncoder()
+           
+    for col in categorical_cols:
+           encoded_df[col] = label_encoder.fit_transform(encoded_df[col])
+
+
+    # Compute correlation matrix
+    correlation_matrix = encoded_df.corr()
+
+    # Get correlation of all features with the target attribute 'Attrition'
+    attrition_correlation = correlation_matrix['Attrition'].sort_values(ascending=False)
+
 
            # Identify columns with correlation <= 0 with 'Attrition'
     columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
