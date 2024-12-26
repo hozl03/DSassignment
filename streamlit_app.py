@@ -312,7 +312,7 @@ with st.expander('Input Data'):
            input_data = pd.concat([input_df, df_clean], axis=0)
            
            # Handle categorical variables before numeric scaling
-           X = pd.get_dummies(input_data, columns=cat_cols)
+           X = pd.get_dummies(input_data, columns=categorical_col)
            
            
            
