@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('🎈 App Name')
+st.title('HEHEHE')
 
 import streamlit as st
 import pandas as pd
