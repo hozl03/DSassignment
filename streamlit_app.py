@@ -312,7 +312,7 @@ with st.expander('Input Data'):
            input_data = pd.concat([input_df, df_clean], axis=0)
            
     # Handle categorical variables before numeric scaling
-    categorical_col = []  # Initialize list
+categorical_col = []  # Initialize list
 
     for column in df_clean.columns:
         # Check if the column is of object type or category type and has limited unique values
