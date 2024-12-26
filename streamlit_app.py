@@ -232,41 +232,41 @@ with st.sidebar:
 
 with st.expander('Input Data'):
 
-           # Ensure input_df has the same structure as df_filtered (used in training)
-           input_df = pd.DataFrame(data, index=[0])
-           st.write('User Input Data')
-           st.write(input_df)
-           input_data = pd.concat([input_df, df_filtered], axis=0)
+           # # Ensure input_df has the same structure as df_filtered (used in training)
+           # input_df = pd.DataFrame(data, index=[0])
+           # st.write('User Input Data')
+           # st.write(input_df)
+           # input_data = pd.concat([input_df, df_filtered], axis=0)
            
-           important_num_cols.remove("GarageArea")
-           # Handle categorical variables before numeric scaling
-           X = pd.get_dummies(input_data, columns=cat_cols)
+           # important_num_cols.remove("GarageArea")
+           # # Handle categorical variables before numeric scaling
+           # X = pd.get_dummies(input_data, columns=cat_cols)
            
            
            
-           important_num_cols.remove("SalePrice")
+           # important_num_cols.remove("SalePrice")
            
-           # Handle the case where the important numeric columns are scaled after dummy encoding
-           # Check if important_num_cols exist in X
-           missing_cols = [col for col in important_num_cols if col not in X.columns]
+           # # Handle the case where the important numeric columns are scaled after dummy encoding
+           # # Check if important_num_cols exist in X
+           # missing_cols = [col for col in important_num_cols if col not in X.columns]
            
-           if missing_cols:
-               st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+           # if missing_cols:
+           #     st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
            
-           # Standardization of data
-           scaler = StandardScaler()
-           # Apply scaler only on numeric columns
-           X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
-           X = X.drop('SalePrice', axis=1)
+           # # Standardization of data
+           # scaler = StandardScaler()
+           # # Apply scaler only on numeric columns
+           # X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
+           # X = X.drop('SalePrice', axis=1)
            
-           # Convert binary columns from 1/0 to True/False
-           for column in X.columns:
-               if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-                   X = X[column].astype(bool)
+           # # Convert binary columns from 1/0 to True/False
+           # for column in X.columns:
+           #     if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+           #         X = X[column].astype(bool)
            
-           X = X[column_names]
-           st.write('Standardized Input Data')
-           st.write(X[:1])
+           # X = X[column_names]
+           # st.write('Standardized Input Data')
+           # st.write(X[:1])
            
            
 # Prediction using different models
