@@ -34,47 +34,53 @@ rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
 
 # Mapping for MSZoning
-msZoning_mapping = {
-    'Commercial': 'C (all)',
-    'Floating Village Residential': 'FV',
-    'Residential High Density': 'RH',
-    'Residential Low Density': 'RL',
-    'Residential Medium Density': 'RM'
+businessTravel_mapping = {
+    'Non-Travel': 'Non-Travel',
+    'Travel Rarely': 'Travel_Rarely',
+    'Travel Frequently': 'Travel_Frequently'
 }
 
-utility_mapping = {
-    'All Public Utilities': 'AllPub',
-    'Electricity, Gas, and Water (Septic Tank)': 'NoSewr',
+department_mapping = {
+    'Research & Development': 'Research & Development',
+    'Sales': 'Sales',
+    'Human Resources': 'Human Resources'
 }
 
-landSlope_mapping = {
-    'Gentle slope': 'Gtl',
-    'Moderate Slope': 'Mod',
-    'Severe Slope': 'Sev'
+educationalField_mapping = {
+    'Life Sciences': 'Life Sciences',
+    'Other': 'Other',
+    'Medical': 'Medical',
+    'Marketing': 'Marketing',
+    'Technical Degree': 'Technical Degree',
+    'Human Resources': 'Human Resources',
 }
 
-buildingType_mapping = {
-    'Single-family Detached': '1Fam',
-    'Two-family Conversion': '2FmCon',
-    'Duplex': 'Duplx',
-    'Townhouse End Unit': 'TwnhsE',
-    'Townhouse Inside Unit': 'TwnhsI'
+gender_mapping = {
+    'Male': 'Male',
+    'Female': 'Female'
 }
 
-kitchenQual_mapping = {
-    'Excellent': 'Ex',
-    'Good': 'Gd',
-    'Average': 'TA',
-    'Fair': 'Fa',
+jobRole_mapping = {
+    'Research Scientist': 'Research Scientist',
+    'Laboratory Technician': 'Laboratory Technician',
+    'Manufacturing Director': 'Manufacturing Director',
+    'Sales Representative': 'Sales Representative',      
+    'Healthcare Representative': 'Healthcare Representative',
+    'Research Director': 'Research Director',
+    'Sales Executive': 'Sales Executive',
+    'Manager': 'Manager',
+    'Human Resources': 'Human Resources'
 }
 
-saleCondition_mapping = {
-    'Normal Sale': 'Normal',
-    'Abnormal Sale': 'Abnorml',
-    'Adjoining Land Purchase': 'AdjLand',
-    'Allocation': 'Alloca',
-    'Family': 'Family',
-    'Partial': 'Partial'
+maritalStatus_mapping = {
+    'Married': 'Married',
+    'Single': 'Single',
+    'Divorced': 'Divorced'
+}
+
+overTime_mapping = {
+    'Yes': 'Yes',
+    'No': 'No'
 }
 
 
@@ -135,10 +141,6 @@ with st.sidebar:
     with st.expander('Education Field'):
                totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
                st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
-
-    with st.expander('Employee Number'):
-               floorSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
-               st.write("First Floor square feet is : ", floorSF, "sqft")
 
     with st.expander('Gender'):
                grLiveArea = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
