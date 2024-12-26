@@ -306,10 +306,10 @@ with st.sidebar:
 with st.expander('Input Data'):
 
            # Ensure input_df has the same structure as df_filtered (used in training)
-           input_df = pd.DataFrame(data, index=[0])
-           st.write('User Input Data')
-           st.write(input_df)
-           input_data = pd.concat([input_df, df_clean], axis=0)
+    input_df = pd.DataFrame(data, index=[0])
+    st.write('User Input Data')
+    st.write(input_df)
+    input_data = pd.concat([input_df, df_clean], axis=0)
            
 # Handle categorical variables before numeric scaling
 categorical_col = []  # Initialize list
