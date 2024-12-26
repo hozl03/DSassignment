@@ -340,21 +340,36 @@ with st.expander('Input Data'):
 #     if missing_cols:
 #         st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
 
-# Standardization of data
+# # Standardization of data
+#     scaler = StandardScaler()
+# # Apply scaler only on numeric columns
+#     X[df_clean] = scaler.fit_transform(X[df_clean])
+#     X = X.drop('Attrition', axis=1)
+
+# # Convert binary columns from 1/0 to True/False
+#     for column in X.columns:
+#         if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+#             X = X[column].astype(bool)
+
+#     X = X[column_names]
+#     st.write('Standardized Input Data')
+#     st.write(X[:1])
+
+# Split the data into features (X) and target (y)
+    X = df_clean.drop(columns=['Attrition'])  # Drop the target column
+    y = df_clean['Attrition']
+
+# Standardization of numeric data
     scaler = StandardScaler()
-# Apply scaler only on numeric columns
-    X[df_clean] = scaler.fit_transform(X[df_clean])
-    X = X.drop('Attrition', axis=1)
 
-# Convert binary columns from 1/0 to True/False
-    for column in X.columns:
-        if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-            X = X[column].astype(bool)
+# Apply scaler only to numeric columns
+    numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
+    X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
 
-    X = X[column_names]
+# Now X is ready for input into the model
     st.write('Standardized Input Data')
-    st.write(X[:1])
-           
+    st.write(X.head(1))  # Show the standardized data
+
            
 # Prediction using different models
 st.write("## Prediction Results")
