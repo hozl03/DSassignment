@@ -127,8 +127,9 @@ with st.sidebar:
 
     st.header('Input features')
     with st.expander('Business Travel'):
-               overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 7)
-               st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
+               businessTravel = st.selectbox('Business Travel', list(buildingType_mapping.keys()))
+               businessTravel_code = businessTravel_mapping[businessTravel]
+               st.write("Business Travel is: ", businessTravel_code)
 
     with st.expander('Department'):
                yearBuilt = st.number_input("Original construction year", value=None, placeholder="Enter a year")
