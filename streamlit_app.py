@@ -383,7 +383,7 @@ if st.button('Predict'):
     # Check for missing inputs (NaN or None values)
     missing_values = .isnull().sum()
 
-    Check if there are any missing values in the user's input
+    # Check if there are any missing values in the user's input
     if missing_values.any():
         st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
     else:
