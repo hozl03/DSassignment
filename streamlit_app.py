@@ -311,50 +311,50 @@ with st.expander('Input Data'):
            st.write(input_df)
            input_data = pd.concat([input_df, df_clean], axis=0)
            
-    # Handle categorical variables before numeric scaling
+# Handle categorical variables before numeric scaling
 categorical_col = []  # Initialize list
 
-    for column in df_clean.columns:
-        # Check if the column is of object type or category type and has limited unique values
-        if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
-            categorical_col.append(column)
+for column in df_clean.columns:
+# Check if the column is of object type or category type and has limited unique values
+if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
+ categorical_col.append(column)
 
-    df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
+df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
 
-    # Check if 'Attrition' is in the list before removing
-    if "Attrition" in categorical_col:
-        # Transform categorical data into dummies
-        categorical_col.remove("Attrition")
-        data = pd.get_dummies(df, columns=categorical_col)
-    else:
-        # Handle the case where 'Attrition' is not in the list
-        data = df.copy()
-           
-           
-           
-           df_clean.remove("Attrition")
-           
-           # Handle the case where the important numeric columns are scaled after dummy encoding
-           # Check if important_num_cols exist in X
-           missing_cols = [col for col in important_num_cols if col not in X.columns]
-           
-           if missing_cols:
-               st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
-           
-           # Standardization of data
-           scaler = StandardScaler()
-           # Apply scaler only on numeric columns
-           X[df_clean] = scaler.fit_transform(X[df_clean])
-           X = X.drop('Attrition', axis=1)
-           
-           # Convert binary columns from 1/0 to True/False
-           for column in X.columns:
-               if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-                   X = X[column].astype(bool)
-           
-           X = X[column_names]
-           st.write('Standardized Input Data')
-           st.write(X[:1])
+# Check if 'Attrition' is in the list before removing
+if "Attrition" in categorical_col:
+# Transform categorical data into dummies
+categorical_col.remove("Attrition")
+data = pd.get_dummies(df, columns=categorical_col)
+else:
+# Handle the case where 'Attrition' is not in the list
+data = df.copy()
+
+
+
+df_clean.remove("Attrition")
+
+# Handle the case where the important numeric columns are scaled after dummy encoding
+# Check if important_num_cols exist in X
+missing_cols = [col for col in important_num_cols if col not in X.columns]
+
+if missing_cols:
+    st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+
+# Standardization of data
+scaler = StandardScaler()
+# Apply scaler only on numeric columns
+X[df_clean] = scaler.fit_transform(X[df_clean])
+X = X.drop('Attrition', axis=1)
+
+# Convert binary columns from 1/0 to True/False
+for column in X.columns:
+    if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+        X = X[column].astype(bool)
+
+X = X[column_names]
+st.write('Standardized Input Data')
+st.write(X[:1])
            
            
 # Prediction using different models
