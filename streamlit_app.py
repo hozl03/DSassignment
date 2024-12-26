@@ -375,7 +375,7 @@ with st.expander('Input Data'):
 st.write("## Prediction Results")
 
 # Allow the user to choose the model before pressing Predict
-model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Support Vector Classifier', 'Neural Network', 'Catboost'])
+model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Support Vector Classifier', 'Neural Network', 'Category Boost'])
 
 if st.button('Predict'):
     # Check for missing inputs (NaN or None values)
