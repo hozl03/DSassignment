@@ -179,18 +179,6 @@ with st.sidebar:
                kitchenQual_code = kitchenQual_mapping[kitchenQual]  # Map to the corresponding code (e.g., "Ex", "Gd")
                st.write("Kitchen Quality code selected is: ", kitchenQual_code)
 
-    with st.expander('Sale Condition'):
-    # Sale Condition input with mapping
-               saleCondition = st.selectbox('Condition of Sale', list(saleCondition_mapping.keys()))
-               saleCondition_code = saleCondition_mapping[saleCondition]
-               st.write("Sale Condition code selected is: ", saleCondition_code)
-
-    with st.expander('Land Slope'):
-    # Land Slope input with mapping
-               landSlope = st.selectbox('Land Slope', list(landSlope_mapping.keys()))
-               landSlope_code = landSlope_mapping[landSlope]
-               st.write("Land Slope code selected is: ", landSlope_code)
-
 
            
     # Corrected data dictionary with valid variable names
