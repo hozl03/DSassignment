@@ -426,7 +426,11 @@ if st.button('Predict'):
                 nn_pred_prob[0][0],
                 "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
             ))
-
+        # Additional output based on prediction
+            if nn_pred_class[0] == 1:
+                st.write("The employee is most likely to attrition.")
+            else:
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Neural Network prediction: {e}")
 
@@ -436,6 +440,11 @@ if st.button('Predict'):
             st.write(f"Input shape: {X[:1].shape}")
             catboost_pred = loaded_catboost.predict(X[:1])
             st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
+            if nn_pred_class[0] == 1:
+                st.write("The employee is most likely to attrition.")
+            else:
+                st.write("The employee is most likely not to attrition.")
+
         except Exception as e:
             st.error(f"Error during Category Boost prediction: {e}")
 
@@ -443,6 +452,10 @@ if st.button('Predict'):
         try:
             random_forest_pred = loaded_random_forest.predict(X[:1])
             st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
+            if nn_pred_class[0] == 1:
+                st.write("The employee is most likely to attrition.")
+            else:
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Random Forest prediction: {e}")
 
