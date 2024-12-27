@@ -395,11 +395,11 @@ st.write("## Prediction Results")
 model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Support Vector Classifier', 'Neural Network', 'Category Boost'])
 
 if st.button('Predict'):
-    if model_choice == 'Neural Network':
+    # if model_choice == 'Neural Network':
         # nn_pred = loaded_nn.predict(X)
         # st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
 
-    elif model_choice == 'Category Boost':
+    if model_choice == 'Category Boost':
         catboost_pred = loaded_catboost.predict(X)
         st.write(f"**Category Boost Prediction: {catboost_pred[0]:,.2f}**")
 
