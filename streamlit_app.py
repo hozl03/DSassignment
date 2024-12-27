@@ -347,6 +347,8 @@ with st.expander('Input Data'):
 # Handle the case where 'Attrition' is not in the list
         data = df.copy()
 
+    st.write("Expected columns during fit:", scaler.feature_names_in_)
+    st.write("Provided columns during transform:", input_df_aligned[numeric_cols].columns)
 
 
 
@@ -441,6 +443,7 @@ if st.button('Predict'):
     # Align input data with training data structure
     input_df_aligned = input_data[:1]  # Take only the first row (user input)
     input_df_aligned[numeric_cols] = scaler.transform(input_df_aligned[numeric_cols])  # Scale numeric columns
+
     
     # Predict based on the selected model
     if model_choice == 'Random Forest':
