@@ -395,7 +395,11 @@ st.write("## Prediction Results")
 model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Support Vector Classifier', 'Neural Network', 'Category Boost'])
 
 if st.button('Predict'):
-    if model_choice == 'Neural Network':
+    if model_choice == 'Random Forest':
+        random_forest_pred = loaded_random_forest.predict(X)
+        st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
+
+    elif model_choice == 'Neural Network':
         nn_pred = loaded_nn.predict(X)
         st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
 
@@ -403,9 +407,6 @@ if st.button('Predict'):
     #     catboost_pred = loaded_catboost.predict(X)
     #     st.write(f"**Category Boost Prediction: {catboost_pred[0]:,.2f}**")
 
-    elif model_choice == 'Random Forest':
-        random_forest_pred = loaded_random_forest.predict(X)
-        st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
 
     # Check for missing inputs (NaN or None values)
     # missing_values = isnull().sum()
