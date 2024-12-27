@@ -399,13 +399,13 @@ if st.button('Predict'):
         # nn_pred = loaded_nn.predict(X)
         # st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
 
-    if model_choice == 'Category Boost':
-        catboost_pred = loaded_catboost.predict(X)
-        st.write(f"**Category Boost Prediction: {catboost_pred[0]:,.2f}**")
+    # if model_choice == 'Category Boost':
+    #     catboost_pred = loaded_catboost.predict(X)
+    #     st.write(f"**Category Boost Prediction: {catboost_pred[0]:,.2f}**")
 
-    elif model_choice == 'Random Forest':
-        random_forest_pred = loaded_random_forest.predict(X)
-        st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
+    # elif model_choice == 'Random Forest':
+    random_forest_pred = loaded_random_forest.predict(X)
+    st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
 
     # Check for missing inputs (NaN or None values)
     # missing_values = isnull().sum()
