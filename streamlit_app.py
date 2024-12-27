@@ -406,13 +406,20 @@ if st.button('Predict'):
             "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
         ))
 
-    elif model_choice == 'Category Boost':
-        try:
-            catboost_pred = loaded_catboost.predict(X[:1])
-            st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
-        except Exception as e:
-            st.error(f"Error during Category Boost prediction: {e}")
+    # elif model_choice == 'Category Boost':
+    #     try:
+    #         catboost_pred = loaded_catboost.predict(X[:1])
+    #         st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
+    #     except Exception as e:
+    #         st.error(f"Error during Category Boost prediction: {e}")
+    
+    elif model_choice == 'CatBoost':
+        cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
+        cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
+        st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
+        st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
 
+           
     # elif model_choice == 'Random Forest Classifier':
     #     try:
     #         random_forest_pred = loaded_random_forest.predict(X[:1])
