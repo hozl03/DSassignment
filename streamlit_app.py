@@ -398,7 +398,7 @@ if st.button('Predict'):
     # Check if the model_choice is valid and prediction can proceed
     if model_choice == 'Neural Network':
         try:
-            nn_pred = loaded_nn.predict(X[:2])  # Use only the first row (user input)
+            nn_pred = loaded_nn.predict(X[:1])  # Use only the first row (user input)
             st.write(f"**Neural Network Prediction: {nn_pred[0]}**")
         except Exception as e:
             st.error(f"Error during Neural Network prediction: {e}")
