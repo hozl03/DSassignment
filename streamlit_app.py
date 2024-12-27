@@ -437,6 +437,7 @@ if st.button('Predict'):
 
     elif model_choice == 'Category Boost':
         try:
+            st.write("Input Data Columns: ", X.columns)
             st.write(f"Input shape: {X[:1].shape}")
             catboost_pred = loaded_catboost.predict(X[:1])
             st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
