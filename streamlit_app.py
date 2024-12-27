@@ -405,7 +405,18 @@ if st.button('Predict'):
     #         nn_pred_prob[0][0],
     #         "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
     #     ))
-    if model_choice == 'Neural Network':
+    if model_choice == 'CatBoost':
+        try:
+            st.write("Input Data Columns: ", X.columns)
+            st.write("Input shape: ", X[:1].shape)
+            cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
+            st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
+            cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
+            st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
+        except Exception as e:
+            st.error(f"Error during CatBoost prediction: {e}")
+
+    elif model_choice == 'Neural Network':
         try:
             nn_pred_prob = loaded_nn.predict(X[:1])  # Probability prediction
             nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
@@ -436,16 +447,6 @@ if st.button('Predict'):
     #         st.error(f"Error during Random Forest prediction: {e}")
 
 
-    elif model_choice == 'CatBoost':
-        try:
-            st.write("Input Data Columns: ", X.columns)
-            st.write("Input shape: ", X[:1].shape)
-            cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
-            st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
-            cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
-            st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
-        except Exception as e:
-            st.error(f"Error during CatBoost prediction: {e}")
            
     elif model_choice == 'Random Forest':
         try:
