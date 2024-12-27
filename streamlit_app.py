@@ -414,22 +414,22 @@ if st.button('Predict'):
         except Exception as e:
             st.error(f"Error during Category Boost prediction: {e}")
 
-    elif model_choice == 'Random Forest Classifier':
-        try:
-            random_forest_pred = loaded_random_forest.predict(X[:1])
-            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
-        except Exception as e:
-            st.error(f"Error during Random Forest prediction: {e}")
+    # elif model_choice == 'Random Forest Classifier':
+    #     try:
+    #         random_forest_pred = loaded_random_forest.predict(X[:1])
+    #         st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
+    #     except Exception as e:
+    #         st.error(f"Error during Random Forest prediction: {e}")
 
 
-    elif model_choice == 'CatBoost':
-        try:
-            cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
-            st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
-            cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
-            st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
-        except Exception as e:
-            st.error(f"Error during CatBoost prediction: {e}")
+    # elif model_choice == 'CatBoost':
+    #     try:
+    #         cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
+    #         st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
+    #         cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
+    #         st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
+    #     except Exception as e:
+    #         st.error(f"Error during CatBoost prediction: {e}")
            
  elif model_choice == 'Random Forest':
         try:
