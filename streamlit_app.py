@@ -396,15 +396,29 @@ model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Suppor
 
 if st.button('Predict'):
     # Check if the model_choice is valid and prediction can proceed
+    # if model_choice == 'Neural Network':
+    #     nn_pred_prob = loaded_nn.predict(X[:1])  # Probability prediction
+    #     nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
+    #     st.write(f"**Neural Network Probability: {nn_pred_prob[0][0]:.2f}**")
+    #     st.write(f"**Neural Network Prediction (Class): {nn_pred_class[0]}**")
+    #     st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
+    #         nn_pred_prob[0][0],
+    #         "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
+    #     ))
     if model_choice == 'Neural Network':
-        nn_pred_prob = loaded_nn.predict(X[:1])  # Probability prediction
-        nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
-        st.write(f"**Neural Network Probability: {nn_pred_prob[0][0]:.2f}**")
-        st.write(f"**Neural Network Prediction (Class): {nn_pred_class[0]}**")
-        st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
-            nn_pred_prob[0][0],
-            "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
-        ))
+        try:
+            nn_pred_prob = loaded_nn.predict(X[:1])  # Probability prediction
+            nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
+            st.write(f"**Neural Network Probability: {nn_pred_prob[0][0]:.2f}**")
+            st.write(f"**Neural Network Prediction (Class): {nn_pred_class[0]}**")
+            st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
+                nn_pred_prob[0][0],
+                "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
+            ))
+
+        except Exception as e:
+            st.error(f"Error during Neural Network prediction: {e}")
+
 
     # elif model_choice == 'Category Boost':
     #     try:
