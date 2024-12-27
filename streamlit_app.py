@@ -431,7 +431,7 @@ if st.button('Predict'):
         except Exception as e:
             st.error(f"Error during CatBoost prediction: {e}")
            
-     elif model_choice == 'Random Forest':
+    elif model_choice == 'Random Forest':
         try:
             rf_prob = loaded_rf.predict_proba(X[:1])  # Predict probabilities
             st.write(f"**Random Forest Probability: {rf_prob[0][1]:.2f}**")
