@@ -401,6 +401,10 @@ if st.button('Predict'):
         nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
         st.write(f"**Neural Network Probability: {nn_pred_prob[0][0]:.2f}**")
         st.write(f"**Neural Network Prediction (Class): {nn_pred_class[0]}**")
+    st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
+        nn_pred_prob[0][0],
+        "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
+    ))
 
     elif model_choice == 'Category Boost':
         try:
