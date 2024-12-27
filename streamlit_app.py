@@ -40,11 +40,11 @@ from xgboost import XGBRegressor
 from sklearn.preprocessing import PolynomialFeatures
 
 import joblib
-from tensorflow.keras.models import load_model
+# from tensorflow.keras.models import load_model
 
 loaded_random_forest = joblib.load('random_forest_model.joblib')
 loaded_catboost = joblib.load('catboost_model.joblib')
-loaded_nn = load_model('neural_network_model.h5')
+# loaded_nn = load_model('neural_network_model.h5')
 
 
 
@@ -396,8 +396,8 @@ model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Suppor
 
 if st.button('Predict'):
     if model_choice == 'Neural Network':
-        nn_pred = loaded_nn.predict(X)
-        st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
+        # nn_pred = loaded_nn.predict(X)
+        # st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
 
     elif model_choice == 'Category Boost':
         catboost_pred = loaded_catboost.predict(X)
