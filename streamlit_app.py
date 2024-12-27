@@ -440,7 +440,7 @@ if st.button('Predict'):
             st.write(f"Input shape: {X[:1].shape}")
             catboost_pred = loaded_catboost.predict(X[:1])
             st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
-            if nn_pred_class[0] == 1:
+            if catboost_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
                 st.write("The employee is most likely not to attrition.")
@@ -452,7 +452,7 @@ if st.button('Predict'):
         try:
             random_forest_pred = loaded_random_forest.predict(X[:1])
             st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
-            if nn_pred_class[0] == 1:
+            if random_forest_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
                 st.write("The employee is most likely not to attrition.")
