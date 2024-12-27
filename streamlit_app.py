@@ -395,13 +395,27 @@ st.write("## Prediction Results")
 model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Support Vector Classifier', 'Neural Network', 'Category Boost'])
 
 if st.button('Predict'):
-    if model_choice == 'Random Forest':
-        random_forest_pred = loaded_random_forest.predict(X)
-        st.write(f"**Random Forest Prediction: {random_forest_pred[0]:}**")
+    # Check if the model_choice is valid and prediction can proceed
+    if model_choice == 'Neural Network':
+        try:
+            nn_pred = loaded_nn.predict(X[:1])  # Use only the first row (user input)
+            st.write(f"**Neural Network Prediction: {nn_pred[0]}**")
+        except Exception as e:
+            st.error(f"Error during Neural Network prediction: {e}")
 
-    elif model_choice == 'Neural Network':
-        nn_pred = loaded_nn.predict(X)
-        st.write(f"**Neural Network Prediction: {nn_pred[0]:,.2f}**")
+    elif model_choice == 'Category Boost':
+        try:
+            catboost_pred = loaded_catboost.predict(X[:1])
+            st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
+        except Exception as e:
+            st.error(f"Error during Category Boost prediction: {e}")
+
+    elif model_choice == 'Random Forest Classifier':
+        try:
+            random_forest_pred = loaded_random_forest.predict(X[:1])
+            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
+        except Exception as e:
+            st.error(f"Error during Random Forest prediction: {e}")
 
     # if model_choice == 'Category Boost':
     #     catboost_pred = loaded_catboost.predict(X)
