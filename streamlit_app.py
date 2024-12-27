@@ -1,4 +1,10 @@
+python3.9 -m venv venv
+source venv/bin/activate  # On Windows, use venv\Scripts\activate
+pip install catboost
+
+
 import streamlit as st
+
 
 st.title('FutureStaff: Employee Attrition Insights')
 
