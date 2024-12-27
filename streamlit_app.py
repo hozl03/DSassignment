@@ -438,6 +438,8 @@ if st.button('Predict'):
 
     elif model_choice == 'CatBoost':
         try:
+            st.write("Input Data Columns: ", X.columns)
+            st.write("Input shape: ", X[:1].shape)
             cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
             st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
             cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
