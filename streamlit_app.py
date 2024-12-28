@@ -392,7 +392,7 @@ with st.expander('Input Data'):
 st.write("## Prediction Results")
 
 # Allow the user to choose the model before pressing Predict
-model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Support Vector Classifier', 'Neural Network', 'Category Boost'])
+model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Random Forest Regression', 'Support Vector Classifier', 'Neural Network', 'Category Boost', 'Logistic Regression', 'Linear Regression'])
 
 if st.button('Predict'):
     # Check if the model_choice is valid and prediction can proceed
@@ -459,7 +459,39 @@ if st.button('Predict'):
                 st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Random Forest prediction: {e}")
+                   
+    elif model_choice == 'Random Forest Regression':
+        try:
+            random_forest_pred = loaded_random_forest.predict(X[:1])
+            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
+            if random_forest_pred[0] == 1:
+                st.write("The employee is most likely to attrition.")
+            else:
+                st.write("The employee is most likely not to attrition.")
+        except Exception as e:
+            st.error(f"Error during Random Forest prediction: {e}")
 
+    elif model_choice == 'Logistic Regression':
+        try:
+            random_forest_pred = loaded_random_forest.predict(X[:1])
+            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
+            if random_forest_pred[0] == 1:
+                st.write("The employee is most likely to attrition.")
+            else:
+                st.write("The employee is most likely not to attrition.")
+        except Exception as e:
+            st.error(f"Error during Random Forest prediction: {e}")
+
+    elif model_choice == 'Linear Regression':
+        try:
+            random_forest_pred = loaded_random_forest.predict(X[:1])
+            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
+            if random_forest_pred[0] == 1:
+                st.write("The employee is most likely to attrition.")
+            else:
+                st.write("The employee is most likely not to attrition.")
+        except Exception as e:
+            st.error(f"Error during Random Forest prediction: {e}")
 
            
     # elif model_choice == 'Random Forest':
