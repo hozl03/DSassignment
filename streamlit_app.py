@@ -42,7 +42,7 @@ from sklearn.preprocessing import PolynomialFeatures
 import joblib
 from tensorflow.keras.models import load_model
 
-loaded_random_forest = joblib.load('random_forest_model.joblib')
+loaded_random_forest = joblib.load('random_forest_classifier.joblib')
 loaded_catboost = joblib.load('catboost_model.joblib')
 loaded_nn = load_model('neural_network_model.h5')
 
