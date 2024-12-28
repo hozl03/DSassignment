@@ -101,6 +101,60 @@ overTime_mapping = {
     'No': 'No'
 }
 
+education_mapping = {
+    'Below College': '1',
+    'College': '2',
+    'Bachelor': '3',
+    'Master': '4',
+    'Doctor': '5'
+}
+
+environmentSatisfaction_mapping = {
+    'Low': '1',
+    'Medium': '2',
+    'High': '3',
+    'Very High': '4'
+}
+
+jobInvolvement_mapping = {
+    'Low': '1',
+    'Medium': '2',
+    'High': '3',
+    'Very High': '4'
+}
+
+jobSatisfaction_mapping = {
+    'Low': '1',
+    'Medium': '2',
+    'High': '3',
+    'Very High': '4'
+}
+
+performanceRating_mapping = {
+    'Low': '1',
+    'Good': '2',
+    'Excellent': '3',
+    'Outstanding': '4'
+}
+
+relationshipSatisfaction_mapping = {
+    'Low': '1',
+    'Medium': '2',
+    'High': '3',
+    'Very High': '4'
+}
+
+workLifeBalance_mapping = {
+    'Bad': '1',
+    'Good': '2',
+    'Better': '3',
+    'Best': '4'
+}
+
+
+
+
+
 
 st.title('Employee Attrition Insights')
 
@@ -244,10 +298,19 @@ with st.expander('Data Visualization'):
 # Input
 with st.sidebar:
     st.header('Input features')
+           
+    with st.expander('Age'):
+               age = st.number_input("Age", value=None, placeholder="Enter the age")
+               st.write("Age is : ", age )
+
     with st.expander('Business Travel'):
                businessTravel = st.selectbox('Business Travel', list(businessTravel_mapping.keys()))
                businessTravel_code = businessTravel_mapping[businessTravel]
                st.write("Business travel is: ", businessTravel_code)
+
+    with st.expander('Daily Rate'):
+               dailyRate = st.number_input("Daily Rate", value=None, placeholder="Enter the daily rate")
+               st.write("Daily Rate is : ", dailyRate )
 
     with st.expander('Department'):
                department = st.selectbox('Department', list(department_mapping.keys()))
@@ -258,10 +321,22 @@ with st.sidebar:
                distance = st.number_input("Distance", value=None, placeholder="Enter the distance from home")
                st.write("Distance from home is : ", distance ,"KM")
 
+    with st.expander('Education'):
+               education = st.selectbox('Department', list(education_mapping.keys()))
+               education_code = education_mapping[education]
+               st.write("Department is: ", education_code)
+
+
     with st.expander('Education Field'):
                educationField = st.selectbox('educationField', list(educationalField_mapping.keys()))
                educationField_code = educationalField_mapping[educationField]
                st.write("Education Field is: ", educationField_code)
+    
+    with st.expander('Environment Satisfaction'):
+               environmentSatisfaction = st.selectbox('educationField', list(environmentSatisfaction_mapping.keys()))
+               environmentSatisfaction_code = environmentSatisfaction_mapping[environmentSatisfaction]
+               st.write("Environment Satisfaction is: ", environmentSatisfaction_code)
+
 
     with st.expander('Gender'):
                gender = st.selectbox('Gender', list(gender_mapping.keys()))
@@ -272,15 +347,33 @@ with st.sidebar:
                hourlyRate = st.number_input("Hourly Rate", value=None, placeholder="Enter the hourly rate")
                st.write("Hourly rate is : ", hourlyRate ,"Hours")
 
+    with st.expander('Job Involvement'):
+               jobInvolvement = st.selectbox('educationField', list(jobInvolvement_mapping.keys()))
+               jobInvolvement_code = jobInvolvement_mapping[jobInvolvement]
+               st.write("Environment Satisfaction is: ", jobInvolvement_code)
+
+    with st.expander('Job Level'):
+               jobLevel = st.slider("Job Level", 0, 4, 2)
+               st.write("Job level is : ", jobLevel)
+
     with st.expander('Job Role'):
                jobRole = st.selectbox('Job Role', list(jobRole_mapping.keys()))
                jobRole_code = jobRole_mapping[jobRole]
                st.write("Job role is: ", jobRole_code)
+    
+    with st.expander('Job Satisfaction'):
+               jobSatisfaction = st.selectbox('educationField', list(jobSatisfaction_mapping.keys()))
+               jobSatisfaction_code = jobSatisfaction_mapping[jobSatisfaction]
+               st.write("Environment Satisfaction is: ", jobSatisfaction_code)
 
     with st.expander('Marital Status'):
                maritalStatus = st.selectbox('Marital Status', list(maritalStatus_mapping.keys()))
                maritalStatus_code = maritalStatus_mapping[maritalStatus]
                st.write("Marital status is: ", maritalStatus_code)
+
+    with st.expander('Monthly Income'):
+               monthlyIncome = st.number_input("Monthly Income", value=None, placeholder="Enter the monthly income")
+               st.write("Monthly income is : $", monthlyIncome)
 
     with st.expander('Monthly Rate'):
                monthlyRate = st.number_input("Monthly Rate", value=None, placeholder="Enter the monthly rate")
@@ -295,25 +388,87 @@ with st.sidebar:
                overTime_code = overTime_mapping[overTime]
                st.write("Over Time is: ", overTime_code)
 
+    with st.expander('Percent Salary Hike'):
+               percentSalaryHike = st.number_input("Percent Salary Hike", value=None, placeholder="Enter the Percent Salary Hike")
+               st.write("Percent Salary Hike is : ", percentSalaryHike)
+
+    with st.expander('Performance Rating'):
+               performanceRating = st.selectbox('Performance Rating', list(performanceRating_mapping.keys()))
+               performanceRating_code = performanceRating_mapping[performanceRating]
+               st.write("Performance Rating is: ", performanceRating_code)
+
+    with st.expander('Relationship Satisfaction'):
+               relationshipSatisfaction = st.selectbox('Relationship Satisfaction', list(relationshipSatisfaction_mapping.keys()))
+               relationshipSatisfaction_code = relationshipSatisfaction_mapping[relationshipSatisfaction]
+               st.write("Relationship Satisfaction is: ", relationshipSatisfaction_code)
+
+    with st.expander('Stock Option Level'): 
+               stockOptionLevel = st.slider("Stock Option Level", 0, 3, 1)
+               st.write("Stock Option Level is : ", stockOptionLevel)
+
+    with st.expander('Total Working Years'):
+               totalWorkingYears = st.number_input("Total Working Years", value=None, placeholder="Enter the Total Working Years")
+               st.write("Total Working Years is : ", totalWorkingYears)
+
     with st.expander('Training Times Last Year'): 
                trainingTimesLastYear = st.slider("Training Times Last Year", 0, 5, 3)
                st.write("Training times last year is : ", trainingTimesLastYear)
-   
+
+    with st.expander('Work Life Balance'):
+               workLifeBalance = st.selectbox('Work Life Balance', list(workLifeBalance_mapping.keys()))
+               workLifeBalance_code = workLifeBalance_mapping[workLifeBalance]
+               st.write("Work Life Balance is: ", workLifeBalance_code)
+
+    with st.expander('Years At Company'):
+               yearsAtCompany = st.number_input("Years At Company", value=None, placeholder="Enter the Years At Company")
+               st.write("Years At Company is : ", yearsAtCompany)
+               
+    with st.expander('Years In Current Role'):
+               yearsInCurrentRole = st.number_input("Years In Current Role", value=None, placeholder="Enter the Years In Current Role")
+               st.write("Years In Current Role is : ", yearsInCurrentRole)
+               
+    with st.expander('Years Since Last Promotion'):
+               yearsSinceLastPromotion = st.number_input("Years Since Last Promotion", value=None, placeholder="Enter the Years Since Last Promotion")
+               st.write("Years Since Last Promotion is : ", yearsSinceLastPromotion)
+
+    with st.expander('Years With Current Manager'):
+               yearsWithCurrManager = st.number_input("Years With Current Manager", value=None, placeholder="Enter the Years With Current Manager")
+               st.write("Years With Current Manager is : ", yearsWithCurrManager)
+
+
            
     # Corrected data dictionary with valid variable names
     data = {
-           'BusinessTravel': businessTravel,  
+           'Age': age,
+           'BusinessTravel': businessTravel,
+           'DailyRate': dailyRate,
            'Department': department,  
-           'DistanceFromHome': distance,  
-           'EducationField': educationField,  
+           'DistanceFromHome': distance,
+           'Education': education,
+           'EducationField': educationField,
+           'EnvironmentSatisfaction': environmentSatisfaction,
            'Gender': gender,  
-           'HourlyRate': hourlyRate,  
-           'JobRole': jobRole,  
-           'MaritalStatus': maritalStatus,  
+           'HourlyRate': hourlyRate,
+           'JobInvolvement': jobInvolvement,
+           'JobLevel': jobLevel,
+           'JobRole': jobRole,
+           'JobSatisfaction': jobSatisfaction,  
+           'MaritalStatus': maritalStatus,
+           'MonthlyIncome': monthlyIncome,
            'MonthlyRate': monthlyRate,  
            'NumCompaniesWorked': numberCompaniesWorked,  
-           'OverTime': overTime,  
-           'TrainingTimesLastYear': trainingTimesLastYear
+           'OverTime': overTime,
+           'PercentSalaryHike': percentSalaryHike,
+           'PerformanceRating': performanceRating,
+           'RelationshipSatisfaction': relationshipSatisfaction,
+           'StockOptionLevel': stockOptionLevel,
+           'TotalWorkingYears': totalWorkingYears,
+           'TrainingTimesLastYear': trainingTimesLastYear,
+           'WorkLifeBalance': workLifeBalance,
+           'YearsAtCompany': yearsAtCompany,
+           'YearsInCurrentRole': yearsInCurrentRole,
+           'YearsSinceLastPromotion': yearsSinceLastPromotion,
+           'YearsWithCurrManager': yearsWithCurrManager
     }
 
 
