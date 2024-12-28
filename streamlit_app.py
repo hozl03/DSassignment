@@ -362,7 +362,7 @@ with st.sidebar:
                st.write("Job role is: ", jobRole_code)
     
     with st.expander('Job Satisfaction'):
-               jobSatisfaction = st.selectbox('educationField', list(jobSatisfaction_mapping.keys()))
+               jobSatisfaction = st.selectbox('Job Satisfaction', list(jobSatisfaction_mapping.keys()))
                jobSatisfaction_code = jobSatisfaction_mapping[jobSatisfaction]
                st.write("Environment Satisfaction is: ", jobSatisfaction_code)
 
