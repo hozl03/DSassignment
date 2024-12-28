@@ -348,9 +348,9 @@ with st.sidebar:
                st.write("Hourly rate is : ", hourlyRate ,"Hours")
 
     with st.expander('Job Involvement'):
-               jobInvolvement = st.selectbox('educationField', list(jobInvolvement_mapping.keys()))
+               jobInvolvement = st.selectbox('Job Involvement', list(jobInvolvement_mapping.keys()))
                jobInvolvement_code = jobInvolvement_mapping[jobInvolvement]
-               st.write("Environment Satisfaction is: ", jobInvolvement_code)
+               st.write("Job Involvement is: ", jobInvolvement_code)
 
     with st.expander('Job Level'):
                jobLevel = st.slider("Job Level", 0, 4, 2)
