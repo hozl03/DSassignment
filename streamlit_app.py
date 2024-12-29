@@ -259,19 +259,19 @@ with st.expander('Data Set'):
            
 
     # Compute correlation matrix
-    correlation_matrix = df_encoded.corr()
+    # correlation_matrix = df_encoded.corr()
 
-    # Get correlation of all features with the target attribute 'Attrition'
-    attrition_correlation = correlation_matrix['Attrition'].sort_values(ascending=False)
+    # # Get correlation of all features with the target attribute 'Attrition'
+    # attrition_correlation = correlation_matrix['Attrition'].sort_values(ascending=False)
 
 
-           # Identify columns with correlation <= 0 with 'Attrition'
-    columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
+    #        # Identify columns with correlation <= 0 with 'Attrition'
+    # columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
            
-           # Drop these columns from the DataFrame
-    df_after_dropping = df_encoded.drop(columns=columns_to_drop)
-    df_after_dropping = df_after_dropping.drop(['Over18', 'EmployeeCount', 'StandardHours'], axis=1)
-    df_clean = df_after_dropping
+    #        # Drop these columns from the DataFrame
+    # df_after_dropping = df_encoded.drop(columns=columns_to_drop)
+    # df_after_dropping = df_after_dropping.drop(['Over18', 'EmployeeCount', 'StandardHours'], axis=1)
+    # df_clean = df_after_dropping
 
            
 
