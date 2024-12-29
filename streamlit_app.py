@@ -545,7 +545,7 @@ with st.expander('Input Data'):
 # Split the data into features (X) and target (y)
     # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
     # y = df_clean['Attrition']
-    X = pd.get_dummies(input_data)
+    X = data.drop(columns=['Attrition','EmployeeCount','EmployeeNumber','Over18','StandardHours'])  # Drop the target column
     # y = input_df['Attrition']
 
 
