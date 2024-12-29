@@ -483,6 +483,7 @@ with st.expander('Input Data'):
     input_df = pd.DataFrame(data, index=[0])
     st.write('User Input Data')
     st.write(input_df)
+    st.write(input_df.info())
     # input_data = pd.concat([input_df, df_clean], axis=0)
 
     # Encode categorical columns
