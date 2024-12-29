@@ -486,12 +486,12 @@ with st.expander('Input Data'):
 # Handle categorical variables before numeric scaling
     categorical_col = []  # Initialize list
 
-    for column in df_clean.columns:
+    for column in data.columns:
 # Check if the column is of object type or category type and has limited unique values
-        if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
+        if (data[column].dtype == 'object' or data[column].dtype.name == 'category') and len(data[column].unique()) <= 50:
             categorical_col.append(column)
 
-    df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
+    data['Attrition'] = data.Attrition.astype("category").cat.codes
 
 # Check if 'Attrition' is in the list before removing
     if "Attrition" in categorical_col:
@@ -507,10 +507,10 @@ with st.expander('Input Data'):
 
 # Handle the case where the important numeric columns are scaled after dummy encoding
 # # Check if important_num_cols exist in X
-    missing_cols = [col for col in important_num_cols if col not in X.columns]
+    # missing_cols = [col for col in important_num_cols if col not in X.columns]
 
-    if missing_cols:
-        st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+    # if missing_cols:
+    #     st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
 
 # Standardization of data
     scaler = StandardScaler()
