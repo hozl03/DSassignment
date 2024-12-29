@@ -495,18 +495,15 @@ with st.expander('Input Data'):
         df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
         # st.write(df_encoded_input[col])
 # Split the data into features (X) and target (y)
-    # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
-    # y = df_clean['Attrition']
-    X = df_encoded_input
-    # y = input_df['Attrition']
+    X = df_encoded_input.copy()
 
 
 # Standardization of numeric data
-    # scaler = StandardScaler()
+    scaler = StandardScaler()
 
 # Apply scaler only to numeric columns
-    # numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
-    # X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
+    numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
+    X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
 
 # Now X is ready for input into the model
     st.write('Standardized Input Data')
