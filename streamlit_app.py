@@ -258,7 +258,7 @@ with st.expander('Data Set'):
 
            
 
-    Compute correlation matrix
+    # Compute correlation matrix
     correlation_matrix = df_encoded.corr()
 
     # Get correlation of all features with the target attribute 'Attrition'
