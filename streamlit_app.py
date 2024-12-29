@@ -495,7 +495,7 @@ with st.expander('Input Data'):
 # Split the data into features (X) and target (y)
     # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
     # y = df_clean['Attrition']
-    X = df_encoded_input
+    X = input_df
     # y = input_df['Attrition']
 
 
