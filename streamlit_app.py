@@ -256,6 +256,13 @@ with st.expander('Data Set'):
            encoded_df[col] = label_encoder.fit_transform(encoded_df[col])
 
 
+# Repeat the same for your input data
+    input_df_encoded = input_df.copy()
+    for col in categorical_cols:
+        input_df_encoded[col] = label_encoder.transform(input_df_encoded[col])
+
+           
+
     # Compute correlation matrix
     correlation_matrix = encoded_df.corr()
 
