@@ -483,7 +483,7 @@ with st.expander('Input Data'):
     input_df = pd.DataFrame(data, index=[0])
     st.write('User Input Data')
     st.write(input_df)
-    input_data = pd.concat([input_df, df_clean], axis=0)
+    # input_data = pd.concat([input_df, df_clean], axis=0)
 
     # Encode categorical columns
     categorical_cols = input_df.select_dtypes(include=['object']).columns
@@ -508,7 +508,7 @@ with st.expander('Input Data'):
 
 # Now X is ready for input into the model
     st.write('Standardized Input Data')
-    st.write(X.head(1))  # Show the standardized data
+    st.write(df_encoded_input.head(1))  # Show the standardized data
 
     # df_encoded.info()
     # df_encoded.head()
@@ -521,26 +521,6 @@ st.write("## Prediction Results")
 model_choice = st.selectbox('Select Model', ['Random Forest Classifier', 'Random Forest Regression', 'Neural Network', 'Categorical Boosting', 'Logistic Regression', 'Linear Regression'])
 
 if st.button('Predict'):
-    # Check if the model_choice is valid and prediction can proceed
-    # if model_choice == 'Neural Network':
-    #     nn_pred_prob = loaded_nn.predict(X[:1])  # Probability prediction
-    #     nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
-    #     st.write(f"**Neural Network Probability: {nn_pred_prob[0][0]:.2f}**")
-    #     st.write(f"**Neural Network Prediction (Class): {nn_pred_class[0]}**")
-    #     st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
-    #         nn_pred_prob[0][0],
-    #         "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
-    #     ))
-    # if model_choice == 'CatBoost':
-    #     try:
-    #         st.write("Input Data Columns: ", X.columns)
-    #         st.write("Input shape: ", X[:1].shape)
-    #         cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
-    #         st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
-    #         cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
-    #         st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
-    #     except Exception as e:
-    #         st.error(f"Error during CatBoost prediction: {e}")
 
     if model_choice == 'Neural Network':
         try:
@@ -620,56 +600,5 @@ if st.button('Predict'):
         except Exception as e:
             st.error(f"Error during Linear Regression prediction: {e}")
 
-           
-    # elif model_choice == 'Random Forest':
-    #     try:
-    #         rf_prob = loaded_rf.predict_proba(X[:1])  # Predict probabilities
-    #         st.write(f"**Random Forest Probability: {rf_prob[0][1]:.2f}**")
-    #         rf_pred_class = (rf_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
-    #         st.write(f"**Random Forest Prediction (Class): {rf_pred_class[0]}**")
-    #     except Exception as e:
-    #         st.error(f"Error during Random Forest prediction: {e}")
-
-    # elif model_choice == 'CatBoost':
-    #     cb_prob = loaded_cb.predict_proba(X[:1])  # Predict probabilities
-    #     cb_pred_class = (cb_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
-    #     st.write(f"**CatBoost Probability: {cb_prob[0][1]:.2f}**")
-    #     st.write(f"**CatBoost Prediction (Class): {cb_pred_class[0]}**")
-
-           
-
-    # elif model_choice == 'Random Forest':
-    #     try:
-    #         rf_prob = loaded_rf.predict_proba(X[:1])  # Predict probabilities
-    #         rf_pred_class = (rf_prob[:, 1] >= 0.5).astype(int)  # Convert to binary
-    #         st.write(f"**Random Forest Probability: {rf_prob[0][1]:.2f}**")
-    #         st.write(f"**Random Forest Prediction (Class): {rf_pred_class[0]}**")
-    #     except Exception as e:
-    #         st.error(f"Error during Random Forest prediction: {e}")
-
-# # Prediction using the selected model
-# if st.button('Predict'):
-#     # Align input data with training data structure
-#     input_df_aligned = input_data[:1]  # Take only the first row (user input)
-#     input_df_aligned[numeric_cols] = scaler.transform(input_df_aligned[numeric_cols])  # Scale numeric columns
-
-    
-#     # Predict based on the selected model
-#     if model_choice == 'Random Forest':
-#         prediction = loaded_random_forest.predict(input_df_aligned)
-#         probability = loaded_random_forest.predict_proba(input_df_aligned)
-#     elif model_choice == 'CatBoost':
-#         prediction = loaded_catboost.predict(input_df_aligned)
-#         probability = loaded_catboost.predict_proba(input_df_aligned)
-#     elif model_choice == 'Neural Network':
-#         prediction = (loaded_nn.predict(input_df_aligned) > 0.5).astype(int)
-#         probability = loaded_nn.predict(input_df_aligned)
-#     else:
-#         st.write("Please select a valid model.")
-#         prediction, probability = None, None
-    
-#     if prediction is not None:
-#         st.write(f"Predicted Attrition: {'Yes' if prediction[0] == 1 else 'No'}")
-#         st.write(f"Prediction Probability: {probability}")
 
 
