@@ -491,11 +491,11 @@ with st.expander('Input Data'):
 
     for col in categorical_cols:
         df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
-           
+        st.write(df_encoded_input[col])
 # Split the data into features (X) and target (y)
     # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
     # y = df_clean['Attrition']
-    X = input_df
+    X = df_encoded_input
     # y = input_df['Attrition']
 
 
