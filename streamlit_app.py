@@ -100,11 +100,11 @@ overTime_mapping = {
 }
 
 education_mapping = {
-    'Below College': '1',
-    'College': '2',
-    'Bachelor': '3',
-    'Master': '4',
-    'Doctor': '5'
+    'Below College': 1,
+    'College': 2,
+    'Bachelor': 3,
+    'Master': 4,
+    'Doctor': 5
 }
 
 environmentSatisfaction_mapping = {
@@ -495,7 +495,7 @@ with st.expander('Input Data'):
         df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
         # st.write(df_encoded_input[col])
 # Split the data into features (X) and target (y)
-    X = df_encoded_input.copy()
+    X = df_encoded_input
 
 
 # Standardization of numeric data
