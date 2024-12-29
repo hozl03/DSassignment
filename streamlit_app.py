@@ -606,6 +606,9 @@ if st.button('Predict'):
 
     elif model_choice == 'Random Forest Classifier':
         try:
+            st.write("Input Data Columns: ", X.columns)
+            st.write("Input shape: ", X[:1].shape)
+
             random_forest_pred = loaded_random_forest.predict(X[:1])
             st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
             if random_forest_pred[0] == 1:
