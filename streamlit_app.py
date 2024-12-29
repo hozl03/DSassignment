@@ -42,9 +42,12 @@ from sklearn.preprocessing import PolynomialFeatures
 import joblib
 from tensorflow.keras.models import load_model
 
-loaded_random_forest = joblib.load('random_forest_classifier.joblib')
+loaded_random_forest_classifier = joblib.load('random_forest_classifier.joblib')
 loaded_catboost = joblib.load('catboost_model.joblib')
 loaded_nn = load_model('neural_network_model.h5')
+loaded_random_forest_reg = joblib.load('random_forest_reg.joblib')
+loaded_log = joblib.load('log_reg_model.joblib')
+loaded_lin = joblib.load('lin_reg_model.joblib')
 
 
 businessTravel_mapping = {
@@ -558,10 +561,8 @@ if st.button('Predict'):
             st.error(f"Error during Neural Network prediction: {e}")
 
 
-    elif model_choice == 'Category Boost':
+    elif model_choice == 'Categorical Boosting':
         try:
-            st.write("Input Data Columns: ", X.columns)
-            st.write(f"Input shape: {X[:1].shape}")
             catboost_pred = loaded_catboost.predict(X[:1])
             st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
             if catboost_pred[0] == 1:
@@ -577,47 +578,47 @@ if st.button('Predict'):
             st.write("Input Data Columns: ", X.columns)
             st.write("Input shape: ", X[:1].shape)
 
-            random_forest_pred = loaded_random_forest.predict(X[:1])
-            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
-            if random_forest_pred[0] == 1:
+            random_forest_classifier_pred = loaded_random_forest_classifier.predict(X[:1])
+            st.write(f"**Random Forest Classifier Prediction: {random_forest_classifier_pred[0]}**")
+            if random_forest_classifier_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
                 st.write("The employee is most likely not to attrition.")
         except Exception as e:
-            st.error(f"Error during Random Forest prediction: {e}")
+            st.error(f"Error during Random Forest Classifier prediction: {e}")
                    
     elif model_choice == 'Random Forest Regression':
         try:
-            random_forest_pred = loaded_random_forest.predict(X[:1])
-            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
-            if random_forest_pred[0] == 1:
+            random_forest_reg_pred = loaded_random_forest_reg.predict(X[:1])
+            st.write(f"**Random Forest Regression Prediction: {random_forest_reg_pred[0]}**")
+            if random_forest_reg_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
                 st.write("The employee is most likely not to attrition.")
         except Exception as e:
-            st.error(f"Error during Random Forest prediction: {e}")
+            st.error(f"Error during Random Forest Regression prediction: {e}")
 
     elif model_choice == 'Logistic Regression':
         try:
-            random_forest_pred = loaded_random_forest.predict(X[:1])
-            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
-            if random_forest_pred[0] == 1:
+            log_pred = loaded_log.predict(X[:1])
+            st.write(f"**Logistic Regression Prediction: {log_pred[0]}**")
+            if log_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
                 st.write("The employee is most likely not to attrition.")
         except Exception as e:
-            st.error(f"Error during Random Forest prediction: {e}")
+            st.error(f"Error during Logistic Regression prediction: {e}")
 
     elif model_choice == 'Linear Regression':
         try:
-            random_forest_pred = loaded_random_forest.predict(X[:1])
-            st.write(f"**Random Forest Prediction: {random_forest_pred[0]}**")
-            if random_forest_pred[0] == 1:
+            lin_pred = loaded_lin.predict(X[:1])
+            st.write(f"**Linear Regression Prediction: {lin_pred[0]}**")
+            if lin_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
                 st.write("The employee is most likely not to attrition.")
         except Exception as e:
-            st.error(f"Error during Random Forest prediction: {e}")
+            st.error(f"Error during Linear Regression prediction: {e}")
 
            
     # elif model_choice == 'Random Forest':
