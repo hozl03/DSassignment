@@ -47,11 +47,6 @@ loaded_catboost = joblib.load('catboost_model.joblib')
 loaded_nn = load_model('neural_network_model.h5')
 
 
-
-rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
-           "Good","Very Good","Excellent","Very Excellent"]
-
-# Mapping for MSZoning
 businessTravel_mapping = {
     'Non-Travel': 'Non-Travel',
     'Travel Rarely': 'Travel_Rarely',
@@ -247,14 +242,15 @@ with st.expander('Data Set'):
 
 
            
-    #  categorical columns
+# Encode categorical columns
     categorical_cols = df_clean.select_dtypes(include=['object']).columns
-    encoded_df = df_clean.copy()
+    df_encoded = df_clean.copy()
     label_encoder = LabelEncoder()
-           
-    for col in categorical_cols:
-           encoded_df[col] = label_encoder.fit_transform(encoded_df[col])
 
+    for col in categorical_cols:
+        df_encoded[col] = label_encoder.fit_transform(df_encoded[col])
+    st.write(df_encoded.info())
+    st.write(df_encoded.head())
 
 
            
