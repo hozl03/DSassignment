@@ -245,15 +245,15 @@ with st.expander('Data Set'):
 
 
            
-# Encode categorical columns
-    categorical_cols = df_clean.select_dtypes(include=['object']).columns
-    df_encoded = df_clean.copy()
-    label_encoder = LabelEncoder()
+# # Encode categorical columns
+#     categorical_cols = df_clean.select_dtypes(include=['object']).columns
+#     df_encoded = df_clean.copy()
+#     label_encoder = LabelEncoder()
 
-    for col in categorical_cols:
-        df_encoded[col] = label_encoder.fit_transform(df_encoded[col])
-    st.write(df_encoded.info())
-    st.write(df_encoded.head())
+#     for col in categorical_cols:
+#         df_encoded[col] = label_encoder.fit_transform(df_encoded[col])
+#     st.write(df_encoded.info())
+#     st.write(df_encoded.head())
 
 
            
