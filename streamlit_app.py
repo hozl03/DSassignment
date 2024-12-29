@@ -528,8 +528,11 @@ with st.expander('Input Data'):
 #     st.write(X[:1])
 
 # Split the data into features (X) and target (y)
-    X = df_clean.drop(columns=['Attrition'])  # Drop the target column
-    y = df_clean['Attrition']
+    # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
+    # y = df_clean['Attrition']
+    X = data.drop(columns=['Attrition'])  # Drop the target column
+    y = data['Attrition']
+
 
 # Standardization of numeric data
     scaler = StandardScaler()
