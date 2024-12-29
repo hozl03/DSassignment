@@ -569,7 +569,7 @@ if st.button('Predict'):
         try:
             random_forest_reg_pred = loaded_random_forest_reg.predict(X[:1])
             random_forest_reg_pred_class = (random_forest_reg_pred >= 0.5).astype(int)  # Convert to binary
-            st.write(f"**Random Forest Regression Probability: {random_forest_reg_pred[0]}**")
+            st.write(f"**Random Forest Regression Probability: {random_forest_reg_pred[0][0]:.2f}**")
             st.write(f"**Random Forest Regression Prediction (Class): {random_forest_reg_pred_class[0]}**")
             st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
                 random_forest_reg_pred[0][0],
@@ -581,6 +581,24 @@ if st.button('Predict'):
                 st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Random Forest Regression prediction: {e}")
+
+        #     try:
+        #     nn_pred_prob = loaded_nn.predict(X[:1])  # Probability prediction
+        #     nn_pred_class = (nn_pred_prob >= 0.5).astype(int)  # Convert to binary
+        #     st.write(f"**Neural Network Probability: {nn_pred_prob[0][0]:.2f}**")
+        #     st.write(f"**Neural Network Prediction (Class): {nn_pred_class[0]}**")
+        #     st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
+        #         nn_pred_prob[0][0],
+        #         "1 (Positive)" if nn_pred_class[0] == 1 else "0 (Negative)"
+        #     ))
+        # # Additional output based on prediction
+        #     if nn_pred_class[0] == 1:
+        #         st.write("The employee is most likely to attrition.")
+        #     else:
+        #         st.write("The employee is most likely not to attrition.")
+        # except Exception as e:
+        #     st.error(f"Error during Neural Network prediction: {e}")
+
 
     
     elif model_choice == 'Logistic Regression':
