@@ -262,7 +262,7 @@ with st.expander('Data Set'):
     correlation_matrix = df_encoded.corr()
 
     # Get correlation of all features with the target attribute 'attrition'
-    attrition_correlation = correlation_matrix['attrition'].sort_values(ascending=False)
+    attrition_correlation = correlation_matrix['Attrition'].sort_values(ascending=False)
 
 
            # Identify columns with correlation <= 0 with 'attrition'
