@@ -486,9 +486,9 @@ with st.expander('Input Data'):
 # Handle categorical variables before numeric scaling
     categorical_col = []  # Initialize list
 
-    for column in data.columns:
+    for column in df_clean.columns:
 # Check if the column is of object type or category type and has limited unique values
-        if (data[column].dtype == 'object' or data[column].dtype.name == 'category') and len(data[column].unique()) <= 50:
+        if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
             categorical_col.append(column)
 
     data['Attrition'] = data.Attrition.astype("category").cat.codes
