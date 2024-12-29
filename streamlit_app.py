@@ -569,7 +569,7 @@ if st.button('Predict'):
         try:
             random_forest_reg_pred = loaded_random_forest_reg.predict(X[:1])
             random_forest_reg_pred_class = (random_forest_reg_pred >= 0.5).astype(int)  # Convert to binary
-            st.write(f"**Random Forest Regression Probability: {random_forest_reg_pred[0][0]:.2f}**")
+            st.write(f"**Random Forest Regression Probability: {random_forest_reg_pred[0]:.2f}**")
             st.write(f"**Random Forest Regression Prediction (Class): {random_forest_reg_pred_class[0]}**")
             st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
                 random_forest_reg_pred[0][0],
