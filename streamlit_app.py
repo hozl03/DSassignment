@@ -256,10 +256,6 @@ with st.expander('Data Set'):
            encoded_df[col] = label_encoder.fit_transform(encoded_df[col])
 
 
-# Repeat the same for your input data
-    input_df_encoded = input_df.copy()
-    for col in categorical_cols:
-        input_df_encoded[col] = label_encoder.transform(input_df_encoded[col])
 
            
 
@@ -509,6 +505,18 @@ with st.expander('Input Data'):
 # Handle the case where 'Attrition' is not in the list
         data = df.copy()
 
+# Ensure all categorical columns are encoded
+    categorical_cols = df_clean.select_dtypes(include=['object']).columns
+    label_encoder = LabelEncoder()
+
+    for col in categorical_cols:
+    # Apply LabelEncoder to each categorical column
+        df_clean[col] = label_encoder.fit_transform(df_clean[col])
+
+# Repeat the same for your input data
+    input_df_encoded = input_df.copy()
+    for col in categorical_cols:
+        input_df_encoded[col] = label_encoder.transform(input_df_encoded[col])
 
 
 
