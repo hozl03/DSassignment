@@ -336,7 +336,7 @@ with st.sidebar:
                st.write("Education Field is: ", educationField_code)
     
     with st.expander('Environment Satisfaction'):
-               environmentSatisfaction = st.selectbox('educationField', list(environmentSatisfaction_mapping.keys()))
+               environmentSatisfaction = st.selectbox('Environment Satisfaction', list(environmentSatisfaction_mapping.keys()))
                environmentSatisfaction_code = environmentSatisfaction_mapping[environmentSatisfaction]
                st.write("Environment Satisfaction is: ", environmentSatisfaction_code)
 
