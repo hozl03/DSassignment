@@ -331,7 +331,7 @@ with st.sidebar:
 
 
     with st.expander('Education Field'):
-               educationField = st.selectbox('educationField', list(educationalField_mapping.keys()))
+               educationField = st.selectbox('Education Field', list(educationalField_mapping.keys()))
                educationField_code = educationalField_mapping[educationField]
                st.write("Education Field is: ", educationField_code)
     
