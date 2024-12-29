@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 import streamlit as st
 
 
-st.title('FutureStaff: Employee attrite Insights')
+st.title('FutureStaff: Employee attrition Insights')
 
 import streamlit as st
 import pandas as pd
@@ -154,9 +154,9 @@ workLifeBalance_mapping = {
 
 
 
-st.title('Employee attrite Insights')
+st.title('Employee attrition Insights')
 
-st.write('The Best Machine Learning App For Employee attrite Insights!')
+st.write('The Best Machine Learning App For Employee attrition Insights!')
 st.write("Develop by: Ivan Lee Kian Hwa,  Kang Quan Pin, Ho Zhi Lin")
 # Load the data
 with st.expander('Data Set'):
@@ -261,12 +261,12 @@ with st.expander('Data Set'):
     # Compute correlation matrix
     correlation_matrix = df_encoded.corr()
 
-    # Get correlation of all features with the target attribute 'attrite'
-    attrite_correlation = correlation_matrix['attrite'].sort_values(ascending=False)
+    # Get correlation of all features with the target attribute 'attrition'
+    attrition_correlation = correlation_matrix['attrition'].sort_values(ascending=False)
 
 
-           # Identify columns with correlation <= 0 with 'attrite'
-    columns_to_drop = attrite_correlation[attrite_correlation <= 0].index
+           # Identify columns with correlation <= 0 with 'attrition'
+    columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
            
            # Drop these columns from the DataFrame
     df_after_dropping = df_encoded.drop(columns=columns_to_drop)
@@ -277,7 +277,7 @@ with st.expander('Data Set'):
 
 with st.expander('Data Visualization'):
     st.write('**Scatter Plot**')
-    # st.scatter_chart(data=df, x='OverallQual', y='attrite')  # Modify as needed
+    # st.scatter_chart(data=df, x='OverallQual', y='attrition')  # Modify as needed
 
     st.write('**Correlation Heatmap**')
     
@@ -533,9 +533,9 @@ if st.button('Predict'):
             ))
         # Additional output based on prediction
             if nn_pred_class[0] == 1:
-                st.write("The employee is most likely to attrite.")
+                st.write("The employee is most likely to attrition.")
             else:
-                st.write("The employee is most likely not to attrite.")
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Neural Network prediction: {e}")
 
@@ -545,9 +545,9 @@ if st.button('Predict'):
             catboost_pred = loaded_catboost.predict(X[:1])
             st.write(f"**Categorical Boosting Prediction: {catboost_pred[0]}**")
             if catboost_pred[0] == 1:
-                st.write("The employee is most likely to attrite.")
+                st.write("The employee is most likely to attrition.")
             else:
-                st.write("The employee is most likely not to attrite.")
+                st.write("The employee is most likely not to attrition.")
 
         except Exception as e:
             st.error(f"Error during Category Boost prediction: {e}")
@@ -559,9 +559,9 @@ if st.button('Predict'):
             random_forest_classifier_pred = loaded_random_forest_classifier.predict(X[:1])
             st.write(f"**Random Forest Classifier Prediction: {random_forest_classifier_pred[0]}**")
             if random_forest_classifier_pred[0] == 1:
-                st.write("The employee is most likely to attrite.")
+                st.write("The employee is most likely to attrition.")
             else:
-                st.write("The employee is most likely not to attrite.")
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Random Forest Classifier prediction: {e}")
                    
@@ -576,9 +576,9 @@ if st.button('Predict'):
                 "1 (Positive)" if random_forest_reg_pred_class[0] == 1 else "0 (Negative)"
             ))
             if random_forest_reg_pred_class[0] == 1:
-                st.write("The employee is most likely to attrite.")
+                st.write("The employee is most likely to attrition.")
             else:
-                st.write("The employee is most likely not to attrite.")
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Random Forest Regression prediction: {e}")
 
@@ -593,9 +593,9 @@ if st.button('Predict'):
         #     ))
         # # Additional output based on prediction
         #     if nn_pred_class[0] == 1:
-        #         st.write("The employee is most likely to attrite.")
+        #         st.write("The employee is most likely to attrition.")
         #     else:
-        #         st.write("The employee is most likely not to attrite.")
+        #         st.write("The employee is most likely not to attrition.")
         # except Exception as e:
         #     st.error(f"Error during Neural Network prediction: {e}")
 
@@ -606,9 +606,9 @@ if st.button('Predict'):
             log_pred = loaded_log.predict(X[:1])
             st.write(f"**Logistic Regression Prediction: {log_pred[0]}**")
             if log_pred[0] == 1:
-                st.write("The employee is most likely to attrite.")
+                st.write("The employee is most likely to attrition.")
             else:
-                st.write("The employee is most likely not to attrite.")
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Logistic Regression prediction: {e}")
 
@@ -624,9 +624,9 @@ if st.button('Predict'):
             ))
 
             if lin_pred_class[0] == 1:
-                st.write("The employee is most likely to attrite.")
+                st.write("The employee is most likely to attrition.")
             else:
-                st.write("The employee is most likely not to attrite.")
+                st.write("The employee is most likely not to attrition.")
         except Exception as e:
             st.error(f"Error during Linear Regression prediction: {e}")
 
