@@ -51,52 +51,52 @@ loaded_lin = joblib.load('lin_reg_model.joblib')
 
 
 businessTravel_mapping = {
-    'Non-Travel': 'Non-Travel',
-    'Travel Rarely': 'Travel_Rarely',
-    'Travel Frequently': 'Travel_Frequently'
+    'Non-Travel': 0,
+    'Travel Rarely': 2,
+    'Travel Frequently': 1
 }
 
 department_mapping = {
-    'Research & Development': 'Research & Development',
-    'Sales': 'Sales',
-    'Human Resources': 'Human Resources'
+    'Research & Development': 1,
+    'Sales': 2,
+    'Human Resources': 0
 }
 
 educationalField_mapping = {
-    'Life Sciences': 'Life Sciences',
-    'Other': 'Other',
-    'Medical': 'Medical',
-    'Marketing': 'Marketing',
-    'Technical Degree': 'Technical Degree',
-    'Human Resources': 'Human Resources',
+    'Life Sciences': 1,
+    'Other': 4,
+    'Medical': 3,
+    'Marketing': 2,
+    'Technical Degree': 5,
+    'Human Resources': 0,
 }
 
 gender_mapping = {
-    'Male': 'Male',
-    'Female': 'Female'
+    'Male': 1,
+    'Female': 0
 }
 
 jobRole_mapping = {
-    'Research Scientist': 'Research Scientist',
-    'Laboratory Technician': 'Laboratory Technician',
-    'Manufacturing Director': 'Manufacturing Director',
-    'Sales Representative': 'Sales Representative',      
-    'Healthcare Representative': 'Healthcare Representative',
-    'Research Director': 'Research Director',
-    'Sales Executive': 'Sales Executive',
-    'Manager': 'Manager',
-    'Human Resources': 'Human Resources'
+    'Research Scientist': 6,
+    'Laboratory Technician': 2,
+    'Manufacturing Director': 4,
+    'Sales Representative': 8,      
+    'Healthcare Representative': 0,
+    'Research Director': 5,
+    'Sales Executive': 7,
+    'Manager': 3,
+    'Human Resources': 1
 }
 
 maritalStatus_mapping = {
-    'Married': 'Married',
-    'Single': 'Single',
-    'Divorced': 'Divorced'
+    'Married': 1,
+    'Single': 2,
+    'Divorced': 0
 }
 
 overTime_mapping = {
-    'Yes': 'Yes',
-    'No': 'No'
+    'Yes': 1,
+    'No': 0
 }
 
 education_mapping = {
@@ -108,45 +108,45 @@ education_mapping = {
 }
 
 environmentSatisfaction_mapping = {
-    'Low': '1',
-    'Medium': '2',
-    'High': '3',
-    'Very High': '4'
+    'Low': 1,
+    'Medium': 2,
+    'High': 3,
+    'Very High': 4
 }
 
 jobInvolvement_mapping = {
-    'Low': '1',
-    'Medium': '2',
-    'High': '3',
-    'Very High': '4'
+    'Low': 1,
+    'Medium': 2,
+    'High': 3,
+    'Very High': 4
 }
 
 jobSatisfaction_mapping = {
-    'Low': '1',
-    'Medium': '2',
-    'High': '3',
-    'Very High': '4'
+    'Low': 1,
+    'Medium': 2,
+    'High': 3,
+    'Very High': 4
 }
 
 performanceRating_mapping = {
-    'Low': '1',
-    'Good': '2',
-    'Excellent': '3',
-    'Outstanding': '4'
+    'Low': 1,
+    'Good': 2,
+    'Excellent': 3,
+    'Outstanding': 4
 }
 
 relationshipSatisfaction_mapping = {
-    'Low': '1',
-    'Medium': '2',
-    'High': '3',
-    'Very High': '4'
+    'Low': 1,
+    'Medium': 2,
+    'High': 3,
+    'Very High': 4
 }
 
 workLifeBalance_mapping = {
-    'Bad': '1',
-    'Good': '2',
-    'Better': '3',
-    'Best': '4'
+    'Bad': 1,
+    'Good': 2,
+    'Better': 3,
+    'Best': 4
 }
 
 
@@ -486,16 +486,16 @@ with st.expander('Input Data'):
     st.write(input_df.info())
     # input_data = pd.concat([input_df, df_clean], axis=0)
 
-    # Encode categorical columns
-    categorical_cols_input = input_df.select_dtypes(include=['object']).columns
-    df_encoded_input = input_df.copy()
-    label_encoder = LabelEncoder()
+    # # Encode categorical columns
+    # categorical_cols_input = input_df.select_dtypes(include=['object']).columns
+    # df_encoded_input = input_df.copy()
+    # label_encoder = LabelEncoder()
 
-    for col in categorical_cols_input:
-        df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
+    # for col in categorical_cols_input:
+    #     df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
         # st.write(df_encoded_input[col])
 # Split the data into features (X) and target (y)
-    X = df_encoded_input
+    X = input_df
 
 
 # Standardization of numeric data
