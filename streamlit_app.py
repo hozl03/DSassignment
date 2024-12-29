@@ -500,15 +500,15 @@ with st.expander('Input Data'):
 
 
 # Standardization of numeric data
-    scaler = StandardScaler()
+    # scaler = StandardScaler()
 
 # Apply scaler only to numeric columns
-    numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
-    X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
+    # numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
+    # X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
 
 # Now X is ready for input into the model
     st.write('Standardized Input Data')
-    st.write(df_encoded_input.head(1))  # Show the standardized data
+    st.write(X.head(1))  # Show the standardized data
 
     # df_encoded.info()
     # df_encoded.head()
