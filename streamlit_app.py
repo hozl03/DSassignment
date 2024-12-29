@@ -572,7 +572,7 @@ if st.button('Predict'):
             st.write(f"**Random Forest Regression Probability: {random_forest_reg_pred[0]:.2f}**")
             st.write(f"**Random Forest Regression Prediction (Class): {random_forest_reg_pred_class[0]}**")
             st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
-                random_forest_reg_pred[0][0],
+                random_forest_reg_pred[0],
                 "1 (Positive)" if random_forest_reg_pred_class[0] == 1 else "0 (Negative)"
             ))
             if random_forest_reg_pred[0] == 1:
