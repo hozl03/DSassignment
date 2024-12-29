@@ -486,37 +486,37 @@ with st.expander('Input Data'):
     st.write(input_df)
     input_data = pd.concat([input_df, df_clean], axis=0)
            
-# Handle categorical variables before numeric scaling
-    categorical_col = []  # Initialize list
+# # Handle categorical variables before numeric scaling
+#     categorical_col = []  # Initialize list
 
-    for column in df_clean.columns:
-# Check if the column is of object type or category type and has limited unique values
-        if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
-            categorical_col.append(column)
+#     for column in df_clean.columns:
+# # Check if the column is of object type or category type and has limited unique values
+#         if (df_clean[column].dtype == 'object' or df_clean[column].dtype.name == 'category') and len(df_clean[column].unique()) <= 50:
+#             categorical_col.append(column)
 
-    df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
+#     df_clean['Attrition'] = df_clean.Attrition.astype("category").cat.codes
 
-# Check if 'Attrition' is in the list before removing
-    if "Attrition" in categorical_col:
-# Transform categorical data into dummies
-        categorical_col.remove("Attrition")
-        data = pd.get_dummies(df, columns=categorical_col)
-    else:
-# Handle the case where 'Attrition' is not in the list
-        data = df.copy()
+# # Check if 'Attrition' is in the list before removing
+#     if "Attrition" in categorical_col:
+# # Transform categorical data into dummies
+#         categorical_col.remove("Attrition")
+#         data = pd.get_dummies(df, columns=categorical_col)
+#     else:
+# # Handle the case where 'Attrition' is not in the list
+#         data = df.copy()
 
-# Ensure all categorical columns are encoded
-    categorical_cols = df_clean.select_dtypes(include=['object']).columns
-    label_encoder = LabelEncoder()
+# # Ensure all categorical columns are encoded
+#     categorical_cols = df_clean.select_dtypes(include=['object']).columns
+#     label_encoder = LabelEncoder()
 
-    for col in categorical_cols:
-    # Apply LabelEncoder to each categorical column
-        df_clean[col] = label_encoder.fit_transform(df_clean[col])
+#     for col in categorical_cols:
+#     # Apply LabelEncoder to each categorical column
+#         df_clean[col] = label_encoder.fit_transform(df_clean[col])
 
-# Repeat the same for your input data
-    input_df_encoded = input_df.copy()
-    for col in categorical_cols:
-        input_df_encoded[col] = label_encoder.transform(input_df_encoded[col])
+# # Repeat the same for your input data
+#     input_df_encoded = input_df.copy()
+#     for col in categorical_cols:
+#         input_df_encoded[col] = label_encoder.transform(input_df_encoded[col])
 
 
 
@@ -545,8 +545,8 @@ with st.expander('Input Data'):
 # Split the data into features (X) and target (y)
     # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
     # y = df_clean['Attrition']
-    X = input_df.drop(columns=['Attrition'])  # Drop the target column
-    y = input_df['Attrition']
+    X = pd.get_dummies(input_data, columns=cat_cols)
+    # y = input_df['Attrition']
 
 
 # Standardization of numeric data
