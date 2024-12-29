@@ -245,33 +245,33 @@ with st.expander('Data Set'):
 
 
            
-# # Encode categorical columns
-#     categorical_cols = df_clean.select_dtypes(include=['object']).columns
-#     df_encoded = df_clean.copy()
-#     label_encoder = LabelEncoder()
+# Encode categorical columns
+    categorical_cols = df_clean.select_dtypes(include=['object']).columns
+    df_encoded = df_clean.copy()
+    label_encoder = LabelEncoder()
 
-#     for col in categorical_cols:
-#         df_encoded[col] = label_encoder.fit_transform(df_encoded[col])
-#     st.write(df_encoded.info())
-#     st.write(df_encoded.head())
+    for col in categorical_cols:
+        df_encoded[col] = label_encoder.fit_transform(df_encoded[col])
+    st.write(df_encoded.info())
+    st.write(df_encoded.head())
 
 
            
 
-    # Compute correlation matrix
-    # correlation_matrix = df_encoded.corr()
+    Compute correlation matrix
+    correlation_matrix = df_encoded.corr()
 
-    # # Get correlation of all features with the target attribute 'Attrition'
-    # attrition_correlation = correlation_matrix['Attrition'].sort_values(ascending=False)
+    # Get correlation of all features with the target attribute 'Attrition'
+    attrition_correlation = correlation_matrix['Attrition'].sort_values(ascending=False)
 
 
-    #        # Identify columns with correlation <= 0 with 'Attrition'
-    # columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
+           # Identify columns with correlation <= 0 with 'Attrition'
+    columns_to_drop = attrition_correlation[attrition_correlation <= 0].index
            
-    #        # Drop these columns from the DataFrame
-    # df_after_dropping = df_encoded.drop(columns=columns_to_drop)
-    # df_after_dropping = df_after_dropping.drop(['Over18', 'EmployeeCount', 'StandardHours'], axis=1)
-    # df_clean = df_after_dropping
+           # Drop these columns from the DataFrame
+    df_after_dropping = df_encoded.drop(columns=columns_to_drop)
+    df_after_dropping = df_after_dropping.drop(['Over18', 'EmployeeCount', 'StandardHours'], axis=1)
+    df_clean = df_after_dropping
 
            
 
@@ -554,9 +554,8 @@ if st.button('Predict'):
 
     elif model_choice == 'Random Forest Classifier':
         try:
-            st.write("Input Data Columns: ", X.columns)
-            st.write("Input shape: ", X[:1].shape)
-
+            # st.write("Input Data Columns: ", X.columns)
+            # st.write("Input shape: ", X[:1].shape)
             random_forest_classifier_pred = loaded_random_forest_classifier.predict(X[:1])
             st.write(f"**Random Forest Classifier Prediction: {random_forest_classifier_pred[0]}**")
             if random_forest_classifier_pred[0] == 1:
@@ -569,7 +568,13 @@ if st.button('Predict'):
     elif model_choice == 'Random Forest Regression':
         try:
             random_forest_reg_pred = loaded_random_forest_reg.predict(X[:1])
-            st.write(f"**Random Forest Regression Prediction: {random_forest_reg_pred[0]}**")
+            random_forest_reg_pred_class = (random_forest_reg_pred >= 0.5).astype(int)  # Convert to binary
+            st.write(f"**Random Forest Regression Probability: {random_forest_reg_pred[0]}**")
+            st.write(f"**Random Forest Regression Prediction (Class): {random_forest_reg_pred_class[0]}**")
+            st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
+                random_forest_reg_pred[0][0],
+                "1 (Positive)" if random_forest_reg_pred_class[0] == 1 else "0 (Negative)"
+            ))
             if random_forest_reg_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
@@ -577,6 +582,7 @@ if st.button('Predict'):
         except Exception as e:
             st.error(f"Error during Random Forest Regression prediction: {e}")
 
+    
     elif model_choice == 'Logistic Regression':
         try:
             log_pred = loaded_log.predict(X[:1])
@@ -591,7 +597,14 @@ if st.button('Predict'):
     elif model_choice == 'Linear Regression':
         try:
             lin_pred = loaded_lin.predict(X[:1])
-            st.write(f"**Linear Regression Prediction: {lin_pred[0]}**")
+            lin_pred_class = (lin_pred >= 0.5).astype(int)  # Convert to binary
+            st.write(f"**Linear Regression Probability: {lin_pred[0]}**")
+            st.write(f"**Linear Regression Prediction (Class): {lin_pred_class[0]}**")
+            st.write("The model predicts a probability of {:.2f}, which is classified as {}.".format(
+                lin_pred[0][0],
+                "1 (Positive)" if lin_pred_class[0] == 1 else "0 (Negative)"
+            ))
+
             if lin_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
