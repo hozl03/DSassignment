@@ -247,7 +247,7 @@ with st.expander('Data Set'):
 
 
            
-    # Encode categorical columns
+    #  categorical columns
     categorical_cols = df_clean.select_dtypes(include=['object']).columns
     encoded_df = df_clean.copy()
     label_encoder = LabelEncoder()
@@ -507,25 +507,25 @@ with st.expander('Input Data'):
 
 # Handle the case where the important numeric columns are scaled after dummy encoding
 # # Check if important_num_cols exist in X
-#     missing_cols = [col for col in important_num_cols if col not in X.columns]
+    missing_cols = [col for col in important_num_cols if col not in X.columns]
 
-#     if missing_cols:
-#         st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+    if missing_cols:
+        st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
 
-# # Standardization of data
-#     scaler = StandardScaler()
-# # Apply scaler only on numeric columns
-#     X[df_clean] = scaler.fit_transform(X[df_clean])
-#     X = X.drop('Attrition', axis=1)
+# Standardization of data
+    scaler = StandardScaler()
+# Apply scaler only on numeric columns
+    X[df_clean] = scaler.fit_transform(X[df_clean])
+    X = X.drop('Attrition', axis=1)
 
-# # Convert binary columns from 1/0 to True/False
-#     for column in X.columns:
-#         if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-#             X = X[column].astype(bool)
+# Convert binary columns from 1/0 to True/False
+    for column in X.columns:
+        if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+            X = X[column].astype(bool)
 
-#     X = X[column_names]
-#     st.write('Standardized Input Data')
-#     st.write(X[:1])
+    X = X[column_names]
+    st.write('Standardized Input Data')
+    st.write(X[:1])
 
 # Split the data into features (X) and target (y)
     # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
