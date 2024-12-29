@@ -534,16 +534,39 @@ with st.expander('Input Data'):
     y = data['Attrition']
 
 
-# Standardization of numeric data
-    scaler = StandardScaler()
+# # Standardization of numeric data
+#     scaler = StandardScaler()
 
-# Apply scaler only to numeric columns
-    numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
-    X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
+# # Apply scaler only to numeric columns
+#     numeric_cols = X.select_dtypes(include=['float64', 'int64']).columns
+#     X[numeric_cols] = scaler.fit_transform(X[numeric_cols])
 
-# Now X is ready for input into the model
-    st.write('Standardized Input Data')
-    st.write(X.head(1))  # Show the standardized data
+# # Now X is ready for input into the model
+#     st.write('Standardized Input Data')
+#     st.write(X.head(1))  # Show the standardized data
+
+# Handle categorical variables before numeric scaling
+    categorical_cols = df_clean.select_dtypes(include=['object', 'category']).columns
+    categorical_cols = [col for col in categorical_cols if col != 'Attrition']
+
+# Apply one-hot encoding (dummy variables)
+    input_data_encoded = pd.get_dummies(input_data, columns=categorical_cols)
+
+# Ensure input_data_encoded matches training data structure
+# Add missing columns with default value of 0
+    for col in X.columns:
+        if col not in input_data_encoded:
+            input_data_encoded[col] = 0
+
+# Drop any extra columns not present during training
+    input_data_encoded = input_data_encoded[X.columns]
+
+# Standardize numeric data
+    input_data_encoded[numeric_cols] = scaler.transform(input_data_encoded[numeric_cols])
+
+# Use the first row of input_data_encoded for prediction
+    X_predict = input_data_encoded.head(1)
+
 
            
 # Prediction using different models
