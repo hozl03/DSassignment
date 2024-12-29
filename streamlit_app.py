@@ -486,12 +486,12 @@ with st.expander('Input Data'):
     # input_data = pd.concat([input_df, df_clean], axis=0)
 
     # Encode categorical columns
-    categorical_cols = input_df.select_dtypes(include=['object']).columns
+    categorical_cols_input = input_df.select_dtypes(include=['object']).columns
     df_encoded_input = input_df.copy()
 
-    # for col in categorical_cols:
-    #     df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
-    #     st.write(df_encoded_input[col])
+    for col in categorical_cols_input:
+        df_encoded_input[col] = label_encoder.fit_transform(df_encoded_input[col])
+        st.write(df_encoded_input[col])
 # Split the data into features (X) and target (y)
     # X = df_clean.drop(columns=['Attrition'])  # Drop the target column
     # y = df_clean['Attrition']
