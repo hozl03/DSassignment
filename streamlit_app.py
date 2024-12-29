@@ -564,7 +564,7 @@ if st.button('Predict'):
     elif model_choice == 'Categorical Boosting':
         try:
             catboost_pred = loaded_catboost.predict(X[:1])
-            st.write(f"**Category Boost Prediction: {catboost_pred[0]}**")
+            st.write(f"**Categorical Boosting Prediction: {catboost_pred[0]}**")
             if catboost_pred[0] == 1:
                 st.write("The employee is most likely to attrition.")
             else:
