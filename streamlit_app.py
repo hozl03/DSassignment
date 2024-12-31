@@ -276,7 +276,7 @@ with st.expander('Data Set'):
            
 
 with st.expander('Data Visualization'):
-    st.write('**Scatter Plot**')
+    # st.write('**Scatter Plot**')
     # st.scatter_chart(data=df, x='OverallQual', y='attrition')  # Modify as needed
 
     st.write('**Correlation Heatmap**')
